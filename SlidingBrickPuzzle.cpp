@@ -59,6 +59,11 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 		std::getline(fin, line);
 	}
 
+	if (row != height)
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -93,4 +98,20 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 
 		out << std::endl;
 	}
+}
+
+bool SlidingBrickPuzzle::is_solved()
+{
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			if (board_[i][j] == GOAL)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
 }

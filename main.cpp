@@ -4,17 +4,17 @@
 
 int main(void)
 {
-	/*
-	std::string s = "this, is, a string, with commas, yo";
-	std::vector<std::string> splits = SlidingBrickPuzzle::split(s, ',');
-	for (size_t i = 0; i < splits.size(); i++)
-	{
-		std::cout << splits[i] << std::endl;
-	}
-	*/
 	SlidingBrickPuzzle puzzle;
+
+	std::cout << "Loading SBP-level0.txt:" << std::endl;
 	puzzle.load_game("SBP-level0.txt");
 	puzzle.print_board();
+	std::cout << "is_solved == " << puzzle.is_solved() << std::endl << std::endl;
+
+	std::cout << "Loading SBP-level0-solved.txt" << std::endl;
+	puzzle.load_game("SBP-level0-solved.txt");
+	puzzle.print_board();
+	std::cout << "is_solved == " << puzzle.is_solved() << std::endl << std::endl;
 
 	return 0;
 }

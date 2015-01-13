@@ -7,6 +7,7 @@ class SlidingBrickPuzzle
 	public:	
 		bool load_game(std::string filename);
 		void print_board(std::ostream &out = std::cout);
+		bool is_solved();
 
 	private:
 		static std::vector<std::string> split(std::string s, char delim = ',');
