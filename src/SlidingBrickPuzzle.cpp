@@ -1,6 +1,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <iostream>
+#include <cmath>
 
 #include "SlidingBrickPuzzle.h"
 
@@ -12,6 +13,11 @@ SlidingBrickPuzzle::SlidingBrickPuzzle(SlidingBrickPuzzle &orig)
 bool SlidingBrickPuzzle::load_game(std::string filename)
 {
 	std::ifstream fin(filename.c_str());
+
+	if (fin.fail())
+	{
+		return false;
+	}
 	
 	std::string line;
 	std::getline(fin, line);
@@ -26,7 +32,7 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 		return false;
 	}
 	
-	int width, height;
+	size_t width, height;
 	try
 	{
 		width = stoi(wh[0]);
@@ -39,10 +45,9 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 
 	board_ = std::vector<std::vector<int>>(height, std::vector<int>(width, 0));
 
-	size_t row = 0;
-	std::getline(fin, line);
-	while (!fin.eof())
+	for (size_t row = 0; row < board_.size(); row++)
 	{
+		std::getline(fin, line);
 		std::vector<std::string> split_line = split(line);
 		if (split_line.size() != width)
 		{
@@ -60,13 +65,6 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 				return false;
 			}
 		}
-		row++;
-		std::getline(fin, line);
-	}
-
-	if (row != height)
-	{
-		return false;
 	}
 
 	return true;
@@ -123,5 +121,69 @@ bool SlidingBrickPuzzle::is_solved(void)
 
 std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::moves_for_piece(int piece)
 {
-	
+	for (size_t row = 0; row < board_.size(); row++)
+	{
+		for (size_t column = 0; column < board_[row].size(); column++)
+		{
+			if (board_[row][column] == piece)
+			{
+				return process_moves(piece, row, column);
+			}
+		}
+	}
+
+	return std::vector<Direction>();
+
+	//for move left:
+	//while (board_[i][j] == piece)
+	//{
+	//	if (board_[i][j - 1] != EMPTY)
+	//		return false;
+	//}
+}
+
+std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::process_moves(int piece, size_t row, size_t column)
+{
+	std::vector<Direction> moves;
+
+	if (check_direction(piece, row, column, -1, 0))
+	{
+		moves.push_back(Direction::UP);
+	}
+
+	if (check_direction(piece, row, column, 1, 0))
+	{
+		moves.push_back(Direction::DOWN);
+	}
+
+	if (check_direction(piece, row, column, 0, -1))
+	{
+		moves.push_back(Direction::LEFT);
+	}
+
+	if (check_direction(piece, row, column, 0, 1))
+	{
+		moves.push_back(Direction::RIGHT);
+	}
+
+	return moves;
+}
+
+bool SlidingBrickPuzzle::check_direction(int piece, size_t row, size_t column, int vert_change, int hor_change)
+{
+	size_t i = row, j = column;
+	int i_change = abs(hor_change), j_change = abs(vert_change);
+
+	while (board_[i][j] == piece)
+	{
+		int board_val = board_[i + vert_change][j + hor_change];
+		if (board_val != EMPTY && (piece != MASTER || board_val != GOAL))
+		{
+			return false;
+		}
+		i += i_change;
+		j += j_change;
+	}
+
+	return true;
 }
