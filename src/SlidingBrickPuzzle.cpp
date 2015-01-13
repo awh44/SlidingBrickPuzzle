@@ -133,13 +133,6 @@ std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::moves_for_piece(i
 	}
 
 	return std::vector<Direction>();
-
-	//for move left:
-	//while (board_[i][j] == piece)
-	//{
-	//	if (board_[i][j - 1] != EMPTY)
-	//		return false;
-	//}
 }
 
 std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::process_moves(int piece, size_t row, size_t column)
