@@ -4,6 +4,11 @@
 
 #include "SlidingBrickPuzzle.h"
 
+SlidingBrickPuzzle::SlidingBrickPuzzle(SlidingBrickPuzzle &orig)
+{
+	board_ = orig.board_;
+}
+
 bool SlidingBrickPuzzle::load_game(std::string filename)
 {
 	std::ifstream fin(filename.c_str());
@@ -114,4 +119,9 @@ bool SlidingBrickPuzzle::is_solved(void)
 	}
 
 	return true;
+}
+
+std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::moves_for_piece(int piece)
+{
+	
 }
