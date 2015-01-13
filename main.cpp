@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "SlidingBrickPuzzle.h"
+#include "src/SlidingBrickPuzzle.h"
 
 int main(void)
 {

@@ -100,7 +100,7 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 	}
 }
 
-bool SlidingBrickPuzzle::is_solved()
+bool SlidingBrickPuzzle::is_solved(void)
 {
 	for (size_t i = 0; i < board_.size(); i++)
 	{
