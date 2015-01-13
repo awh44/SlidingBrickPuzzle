@@ -13,7 +13,7 @@ int main(void)
 	}
 	*/
 	SlidingBrickPuzzle puzzle;
-	puzzle.load_game("../SBP-level0.txt");
+	puzzle.load_game("SBP-level0.txt");
 	puzzle.print_board();
 
 	return 0;
