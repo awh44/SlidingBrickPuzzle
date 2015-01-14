@@ -51,7 +51,38 @@ int main(void)
 	std::cout << "Moves for piece 4: ";
 	print_moves(puzzle.moves_for_piece(4));
 	std::cout << "All moves are:" << std::endl;
-	print_move_array(puzzle.all_moves());
+	std::vector<Move> moves = puzzle.all_moves();
+	print_move_array(moves);
+	
+	std::cout << "Moving 3 left:" << std::endl;
+	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
+	puzzle.print_board();	
+
+	std::cout << "Moving 2 left:" << std::endl;
+	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::LEFT, 2, 2));
+	puzzle.print_board();
+
+	std::cout << "Moving 4 down:" << std::endl;
+	puzzle.apply_move(Move(4, SlidingBrickPuzzle::Direction::DOWN, 1, 3));
+	puzzle.print_board();
+
+	std::cout << "Moving 3 right twice:" << std::endl;
+	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 1));
+	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 2));
+	puzzle.print_board();
+
+	std::cout << "Moving 2 up:" << std::endl;
+	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 2, 1));
+	puzzle.print_board();
+	std::cout << "Valid moves for 2: ";
+	print_moves(puzzle.moves_for_piece(2));
+
+	std::cout << "Moving 2 up again:" << std::endl;
+	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
+	puzzle.print_board();
+
+	
+
 	std::cout << std::endl;
 
 

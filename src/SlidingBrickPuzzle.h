@@ -20,6 +20,7 @@ class SlidingBrickPuzzle
 		bool is_solved(void);
 		std::vector<Direction> moves_for_piece(int piece);
 		std::vector<Move> all_moves();
+		void apply_move(Move move);
 
 	private:
 		static const int GOAL = -1;

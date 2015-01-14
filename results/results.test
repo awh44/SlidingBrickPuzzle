@@ -11,6 +11,43 @@ Moves for piece 4:
 All moves are:
 piece 3: Left,
 piece 2: Left,
+Moving 3 left:
+5,4
+1,-1,-1,1,1,
+1,3,0,4,1,
+1,0,2,2,1,
+1,1,1,1,1,
+Moving 2 left:
+5,4
+1,-1,-1,1,1,
+1,3,0,4,1,
+1,2,2,0,1,
+1,1,1,1,1,
+Moving 4 down:
+5,4
+1,-1,-1,1,1,
+1,3,0,0,1,
+1,2,2,4,1,
+1,1,1,1,1,
+Moving 3 right twice:
+5,4
+1,-1,-1,1,1,
+1,0,0,3,1,
+1,2,2,4,1,
+1,1,1,1,1,
+Moving 2 up:
+5,4
+1,-1,-1,1,1,
+1,2,2,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+Valid moves for 2: Up,Down,
+Moving 2 up again:
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
 
 Loading SBP-level0-solved.txt:
 5,4

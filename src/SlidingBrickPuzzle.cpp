@@ -198,7 +198,7 @@ std::vector<Move> SlidingBrickPuzzle::all_moves()
 				std::vector<Direction> piece_moves = process_moves(board_val, i, j);
 				for (size_t k = 0; k < piece_moves.size(); k++)
 				{
-					moves.push_back(Move(board_val, piece_moves[k]));
+					moves.push_back(Move(board_val, piece_moves[k], i, j));
 				}
 			}
 		}
@@ -210,3 +210,71 @@ bool SlidingBrickPuzzle::is_piece(int piece)
 {
 	return piece >= MASTER;
 }
+
+void SlidingBrickPuzzle::apply_move(Move move)
+{
+	int piece = move.get_piece();
+	size_t row = move.get_row(), column = move.get_column();
+	Direction direction = move.get_direction();
+
+	if (direction == Direction::UP)
+	{
+		size_t last_row = row;
+		while (board_[last_row + 1][column] == piece)
+		{
+			last_row++;
+		} 
+
+		do
+		{
+			board_[row - 1][column] = piece;
+			board_[last_row][column] = EMPTY;
+			column++;
+		} while (board_[row][column] == piece);
+	}
+	else if (direction == Direction::DOWN)
+	{
+		size_t last_row = row;
+		while (board_[last_row + 1][column] == piece)
+		{
+			last_row++;
+		}
+
+		do
+		{
+			board_[last_row + 1][column] = piece;
+			board_[row][column] = EMPTY;
+			column++;
+		} while (board_[row][column] == piece);
+	}
+	else if (direction == Direction::LEFT)
+	{
+		size_t last_column = column;
+		while (board_[row][last_column + 1] == piece)
+		{
+			last_column++;
+		}
+
+		do
+		{
+			board_[row][column - 1] = piece;
+			board_[row][last_column] = EMPTY;
+			row++;
+		} while (board_[row][column] == piece);
+	}
+	else if (direction == Direction::RIGHT)
+	{
+		size_t last_column = column;
+		while (board_[row][last_column + 1] == piece)
+		{
+			last_column++;
+		}
+
+		do
+		{
+			board_[row][column] = EMPTY;
+			board_[row][last_column + 1] = piece;
+			row++;
+		} while (board_[row][column] == piece);
+	}
+}	
