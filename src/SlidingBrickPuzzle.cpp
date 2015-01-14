@@ -290,3 +290,42 @@ bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other)
 {
 	return board_ == other.board_;
 }
+
+void SlidingBrickPuzzle::normalize()
+{
+	int current_index = 3;
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			int board_val = board_[i][j];
+			if (board_val == current_index)
+			{
+				current_index++;
+			}
+			else if (board_val > current_index)
+			{
+				swap_indices(current_index, board_val);
+				current_index++;
+			}
+		}
+	}
+}
+
+void SlidingBrickPuzzle::swap_indices(int index1, int index2)
+{
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			if (board_[i][j] == index1)
+			{
+				board_[i][j] = index2;
+			}
+			else if (board_[i][j] == index2)
+			{
+				board_[i][j] = index1;
+			}
+		}
+	}	
+}

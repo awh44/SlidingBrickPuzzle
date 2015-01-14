@@ -23,6 +23,7 @@ class SlidingBrickPuzzle
 		void apply_move(Move move);
 		SlidingBrickPuzzle apply_move_clone(Move move);
 		bool equal(const SlidingBrickPuzzle &other);
+		void normalize();
 
 	private:
 		static const int GOAL = -1;
@@ -37,6 +38,7 @@ class SlidingBrickPuzzle
 		std::vector<Direction> process_moves(int piece, size_t row, size_t column);
 		bool check_direction(int piece, size_t row, size_t column, int vert_change, int hor_change);
 		bool is_piece(int piece);
+		void swap_indices(int index1, int index2);
 };
 
 #endif

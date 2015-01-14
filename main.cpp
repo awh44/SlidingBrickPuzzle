@@ -87,7 +87,6 @@ int main(void)
 
 	std::cout << std::endl;
 
-
 	std::cout << "Loading SBP-level0-solved.txt:" << std::endl;
 	SlidingBrickPuzzle puzzle2;
 	puzzle2.load_game("input/SBP-level0-solved.txt");
@@ -95,6 +94,16 @@ int main(void)
 	std::cout << "is_solved == " << puzzle.is_solved() << std::endl;
 	std::cout << "Comparing two solved puzzles: " << puzzle2.equal(puzzle) << std::endl;
 	std::cout << "Comparing solved and unsolved: " << puzzle2.equal(new_p) << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << "Loading the non-normalized board:" << std::endl;
+	SlidingBrickPuzzle abnormal;
+	abnormal.load_game("input/SBP-test-not-normalized.txt");
+	abnormal.print_board();
+	std::cout << "Normalizing:" << std::endl;
+	abnormal.normalize();
+	abnormal.print_board();
 	
 	return 0;
 }
