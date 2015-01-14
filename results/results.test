@@ -48,6 +48,12 @@ Moving 2 up again:
 1,0,0,3,1,
 1,0,0,4,1,
 1,1,1,1,1,
+Copying board and applying move of 2 down:
+5,4
+1,0,0,1,1,
+1,2,2,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
 
 Loading SBP-level0-solved.txt:
 5,4
@@ -56,12 +62,5 @@ Loading SBP-level0-solved.txt:
 1,0,0,4,1,
 1,1,1,1,1,
 is_solved == 1
-
-Copying the puzzle into another puzzle:
-5,4
-1,2,2,1,1,
-1,0,0,3,1,
-1,0,0,4,1,
-1,1,1,1,1,
-is_solved == 1
-
+Comparing two solved puzzles: 1
+Comparing solved and unsolved: 0

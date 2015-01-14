@@ -7,7 +7,7 @@
 #include "SlidingBrickPuzzle.h"
 #include "Move.h"
 
-SlidingBrickPuzzle::SlidingBrickPuzzle(SlidingBrickPuzzle &orig)
+SlidingBrickPuzzle::SlidingBrickPuzzle(const SlidingBrickPuzzle &orig)
 {
 	board_ = orig.board_;
 }
@@ -277,4 +277,16 @@ void SlidingBrickPuzzle::apply_move(Move move)
 			row++;
 		} while (board_[row][column] == piece);
 	}
-}	
+}
+
+SlidingBrickPuzzle SlidingBrickPuzzle::apply_move_clone(Move move)
+{
+	SlidingBrickPuzzle new_puzzle(*this);
+	new_puzzle.apply_move(move);
+	return new_puzzle;
+}
+
+bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other)
+{
+	return board_ == other.board_;
+}

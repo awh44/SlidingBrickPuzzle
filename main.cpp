@@ -81,20 +81,20 @@ int main(void)
 	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
 	puzzle.print_board();
 
-	
+	std::cout << "Copying board and applying move of 2 down:" << std::endl;
+	SlidingBrickPuzzle new_p = puzzle.apply_move_clone(Move(2, SlidingBrickPuzzle::Direction::DOWN, 0, 1));
+	new_p.print_board();
 
 	std::cout << std::endl;
 
 
 	std::cout << "Loading SBP-level0-solved.txt:" << std::endl;
-	puzzle.load_game("input/SBP-level0-solved.txt");
-	puzzle.print_board();
-	std::cout << "is_solved == " << puzzle.is_solved() << std::endl << std::endl;
-
-	std::cout << "Copying the puzzle into another puzzle:" << std::endl;
-	SlidingBrickPuzzle puzzle2(puzzle);
+	SlidingBrickPuzzle puzzle2;
+	puzzle2.load_game("input/SBP-level0-solved.txt");
 	puzzle2.print_board();
-	std::cout << "is_solved == " << puzzle.is_solved() << std::endl << std::endl;
+	std::cout << "is_solved == " << puzzle.is_solved() << std::endl;
+	std::cout << "Comparing two solved puzzles: " << puzzle2.equal(puzzle) << std::endl;
+	std::cout << "Comparing solved and unsolved: " << puzzle2.equal(new_p) << std::endl;
 	
 	return 0;
 }
