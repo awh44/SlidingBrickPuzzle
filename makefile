@@ -1,5 +1,5 @@
 run: brick.out
-	./brick.out
+	@./brick.out
 
 debug: brick.out
 	gdb ./brick.out

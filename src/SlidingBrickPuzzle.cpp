@@ -2,8 +2,10 @@
 #include <stdexcept>
 #include <iostream>
 #include <cmath>
+#include <map>
 
 #include "SlidingBrickPuzzle.h"
+#include "Move.h"
 
 SlidingBrickPuzzle::SlidingBrickPuzzle(SlidingBrickPuzzle &orig)
 {
@@ -179,4 +181,32 @@ bool SlidingBrickPuzzle::check_direction(int piece, size_t row, size_t column, i
 	}
 
 	return true;
+}
+
+std::vector<Move> SlidingBrickPuzzle::all_moves()
+{
+	std::vector<Move> moves;
+	std::map<int, bool> seen;
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			int board_val = board_[i][j];
+			if (is_piece(board_val) && !seen[board_val])
+			{
+				seen[board_val] = true;
+				std::vector<Direction> piece_moves = process_moves(board_val, i, j);
+				for (size_t k = 0; k < piece_moves.size(); k++)
+				{
+					moves.push_back(Move(board_val, piece_moves[k]));
+				}
+			}
+		}
+	}
+	return moves;
+}
+
+bool SlidingBrickPuzzle::is_piece(int piece)
+{
+	return piece >= MASTER;
 }

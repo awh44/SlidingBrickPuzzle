@@ -33,6 +33,7 @@ class SlidingBrickPuzzle
 		
 		std::vector<Direction> process_moves(int piece, size_t row, size_t column);
 		bool check_direction(int piece, size_t row, size_t column, int vert_change, int hor_change);
+		bool is_piece(int piece);
 };
 
 #endif
