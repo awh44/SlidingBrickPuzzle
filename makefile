@@ -2,7 +2,7 @@ PAGER=less
 COMP=g++
 DEBUG=gdb
 
-.PHONY: view-results
+.PHONY: view-results clean
 
 view-results: results/results.test
 	@$(PAGER) results/results.test
@@ -15,3 +15,6 @@ debug: brick.out
 
 brick.out: main.cpp src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp src/Move.h src/Move.cpp
 	@$(COMP) -obrick.out -g -Wall -std=gnu++11 main.cpp src/SlidingBrickPuzzle.cpp src/Move.cpp
+
+clean:
+	@rm brick.out
