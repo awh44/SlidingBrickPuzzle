@@ -1,0 +1,30 @@
+Loading SBP-level0.txt:
+5,4
+1,-1,-1,1,1,
+1,0,3,4,1,
+1,0,2,2,1,
+1,1,1,1,1,
+is_solved == 0
+Moves for the master piece: Left,
+Moves for piece 3: Left,
+Moves for piece 4: 
+All moves are:
+piece 3: Left,
+piece 2: Left,
+
+Loading SBP-level0-solved.txt:
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+is_solved == 1
+
+Copying the puzzle into another puzzle:
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+is_solved == 1
+
