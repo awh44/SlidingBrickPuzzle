@@ -23,5 +23,6 @@ int main(int argc, char *argv[])
 	Walk *walk = new RandomWalk(puzzle, max_moves);
 	walk->walk();
 
+	delete walk;
 	return 0;
 }

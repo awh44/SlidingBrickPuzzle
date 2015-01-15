@@ -6,6 +6,7 @@
 class Walk
 {
 	public:
+		virtual ~Walk() {};
 		/**
 			does a walk of the SlidingBrickPuzzle puzzle_
 		*/
