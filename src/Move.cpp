@@ -10,22 +10,22 @@ Move::Move(int piece, SlidingBrickPuzzle::Direction direction, size_t row, size_
 	column_ = column;
 }
 
-int Move::get_piece()
+int Move::get_piece(void)
 {
 	return piece_;
 }
 
-size_t Move::get_row()
+size_t Move::get_row(void)
 {
 	return row_;
 }
 
-size_t Move::get_column()
+size_t Move::get_column(void)
 {
 	return column_;
 }
 
-SlidingBrickPuzzle::Direction Move::get_direction()
+SlidingBrickPuzzle::Direction Move::get_direction(void)
 {
 	return direction_;
 }

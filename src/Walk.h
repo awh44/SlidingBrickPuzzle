@@ -9,7 +9,7 @@ class Walk
 		/**
 			does a walk of the SlidingBrickPuzzle puzzle_
 		*/
-		virtual void walk() = 0;
+		virtual void walk(void) = 0;
 
 	protected:
 		SlidingBrickPuzzle puzzle_;

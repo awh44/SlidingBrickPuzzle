@@ -13,7 +13,7 @@ class RandomWalk : public Walk
 		/**
 			does a random walk of the SlidingBrickPuzzle member variable puzzle_
 		*/
-		void walk();
+		void walk(void);
 
 	private:
 		size_t max_moves_;
