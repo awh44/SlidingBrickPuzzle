@@ -2,19 +2,25 @@ PAGER=less
 COMP=g++
 DEBUG=gdb
 
-.PHONY: view-results clean
+.PHONY: random correct clean
 
-view-results: results/results.test
+random: random.out
+	@./random.out
+
+correct: results/results.test
 	@$(PAGER) results/results.test
 
-results/results.test: brick.out
-	@./brick.out > results/results.test
+results/results.test: correct.out
+	@./correct.out > results/results.test
 
-debug: brick.out
-	@$(DEBUG) ./brick.out
+random.out: drivers/random.cpp src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp src/Move.h src/Move.cpp src/Walk.h src/RandomWalk.h src/RandomWalk.cpp
+	$(COMP) -orandom.out -g -Wall -std=gnu++11 drivers/random.cpp src/SlidingBrickPuzzle.cpp src/Move.cpp src/RandomWalk.cpp
 
-brick.out: main.cpp src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp src/Move.h src/Move.cpp
-	@$(COMP) -obrick.out -g -Wall -std=gnu++11 main.cpp src/SlidingBrickPuzzle.cpp src/Move.cpp
+correct.out: drivers/correct.cpp src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp src/Move.h src/Move.cpp 
+	@$(COMP) -ocorrect.out -g -Wall -std=gnu++11 drivers/correct.cpp src/SlidingBrickPuzzle.cpp src/Move.cpp
+
+debug: correct.out
+	@$(DEBUG) ./correct.out
 
 clean:
-	@rm brick.out
+	@rm *.out

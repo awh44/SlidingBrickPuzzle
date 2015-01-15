@@ -1,8 +1,10 @@
 #include <iostream>
 #include <map>
 
-#include "src/SlidingBrickPuzzle.h"
-#include "src/Move.h"
+#include "../src/SlidingBrickPuzzle.h"
+#include "../src/Move.h"
+#include "../src/Walk.h"
+#include "../src/RandomWalk.h"
 
 void print_direction_string(SlidingBrickPuzzle::Direction direction)
 {
@@ -104,6 +106,8 @@ int main(void)
 	std::cout << "Normalizing:" << std::endl;
 	abnormal.normalize();
 	abnormal.print_board();
+
+	std::cout << std::endl;
 	
 	return 0;
 }
