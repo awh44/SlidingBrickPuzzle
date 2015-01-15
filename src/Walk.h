@@ -6,6 +6,9 @@
 class Walk
 {
 	public:
+		/**
+			does a walk of the SlidingBrickPuzzle puzzle_
+		*/
 		virtual void walk() = 0;
 
 	protected:
