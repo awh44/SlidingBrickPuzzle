@@ -3,8 +3,6 @@
 
 #include "../src/SlidingBrickPuzzle.h"
 #include "../src/Move.h"
-#include "../src/Walk.h"
-#include "../src/RandomWalk.h"
 
 void print_direction_string(SlidingBrickPuzzle::Direction direction)
 {
