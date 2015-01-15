@@ -5,7 +5,7 @@ DEBUG=gdb
 .PHONY: random correct clean
 
 random: random.out
-	@./random.out
+	@./random.out $(MOVES)
 
 correct: results/results.test
 	@$(PAGER) results/results.test
