@@ -248,6 +248,11 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 	}
 }
 
+bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
+{
+	return (board_val == EMPTY) || ((piece == MASTER) && (board_val == GOAL));
+}
+
 std::vector<std::string> SlidingBrickPuzzle::split(std::string s, char delim)
 {
 	std::vector<std::string> values;
@@ -287,11 +292,6 @@ std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::process_moves(int
 	}
 
 	return moves;
-}
-
-bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
-{
-	return (board_val == EMPTY) || ((piece == MASTER) && (board_val == GOAL));
 }
 
 bool SlidingBrickPuzzle::check_up(int piece, size_t row, size_t column)
