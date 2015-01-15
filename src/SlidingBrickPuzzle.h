@@ -78,7 +78,15 @@ class SlidingBrickPuzzle
 		void print_board(std::ostream &out = std::cout);
 
 
-	private:		
+	private:
+		/**
+			returns whether the given piece can move into a position with the value board_val
+			@param piece the number of the piece being examined
+			@param board_val the value on the board_ where the piece wants to try to move
+			@return whether piece can move onto a place with value board_val (true if it can)
+		*/
+		static bool is_valid_place(int piece, int board_val);
+		
 		/**
 			given a string s, splits that string into substrings based on the delim character, and
 			returns the substrings in vector
@@ -97,21 +105,45 @@ class SlidingBrickPuzzle
 			@return a vector of all the Directions that the given piece can move
 		*/
 		std::vector<Direction> process_moves(int piece, size_t row, size_t column);
-
+	
 		/**
-			checks a particular direction, based on vert_change and hor_change, for a piece and sees
-			if that direction is a possible move for the piece
+			determines whether the piece, whose upper left corner is at row and column, can move up
 			@param piece the number of the piece being examined
 			@param row the row in which the piece's upper left corner lies
-			@param column the column in which the piece's upper left corner lies
-			@param vert_change indicates how far in vertical direction should be checked for empty
-							   spaces into which the piece can be moved
-			@param hor_change indicates how far in  horizontal direction should be checked for empty
-							   spaces into which the piece can be moved
-			@return whether the piece can be moved in the direction indicated by the combination of
-							   vert_change and hor_change
+			@param column the column in which the peice's upper left corner lies
+			@return whether the piece can move up (true if it can)
 		*/
-		bool check_direction(int piece, size_t row, size_t column, int vert_change, int hor_change);
+		bool check_up(int piece, size_t row, size_t column);
+
+		/**
+			determines whether the piece, whose upper left corner is at row and column, can move
+			down
+			@param piece the number of the piece being examined
+			@param row the row in which the piece's upper left corner lies
+			@param column the column in which the peice's upper left corner lies
+			@return whether the piece can move down (true if it can)
+		*/
+		bool check_down(int piece, size_t row, size_t column);
+
+		/**
+			determines whether the piece, whose upper left corner is at row and column, can move
+			left
+			@param piece the number of the piece being examined
+			@param row the row in which the piece's upper left corner lies
+			@param column the column in which the peice's upper left corner lies
+			@return whether the piece can move left (true if it can)
+		*/
+		bool check_left(int piece, size_t row, size_t column);
+
+		/**
+			determines whether the piece, whose upper left corner is at row and column, can move
+			right
+			@param piece the number of the piece being examined
+			@param row the row in which the piece's upper left corner lies
+			@param column the column in which the peice's upper left corner lies
+			@return whether the piece can move right (true if it can)
+		*/
+		bool check_right(int piece, size_t row, size_t column);
 
 		/**
 			given a value from the board_, determines whether it's a piece (and not an empty square,

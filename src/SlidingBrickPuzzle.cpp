@@ -72,55 +72,6 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 	return true;
 }
 
-std::vector<std::string> SlidingBrickPuzzle::split(std::string s, char delim)
-{
-	std::vector<std::string> values;
-	size_t start = 0, end = s.find_first_of(delim, 1);
-	while (end != std::string::npos)
-	{
-		values.push_back(s.substr(start, end - start));
-		start = end + 1;
-		end = s.find_first_of(delim, start + 1);
-	}
-
-	return values;
-}
-
-void SlidingBrickPuzzle::print_board(std::ostream &out)
-{
-	if (board_.size() < 1)
-	{
-		return;
-	}
-
-	out << board_[0].size() << "," << board_.size() << std::endl;
-	for (size_t i = 0; i < board_.size(); i++)
-	{
-		for (size_t j = 0; j < board_[i].size(); j++)
-		{
-			out << board_[i][j] << ",";
-		}
-
-		out << std::endl;
-	}
-}
-
-bool SlidingBrickPuzzle::is_solved(void)
-{
-	for (size_t i = 0; i < board_.size(); i++)
-	{
-		for (size_t j = 0; j < board_[i].size(); j++)
-		{
-			if (board_[i][j] == GOAL)
-			{
-				return false;
-			}
-		}
-	}
-
-	return true;
-}
-
 std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::moves_for_piece(int piece)
 {
 	for (size_t row = 0; row < board_.size(); row++)
@@ -137,53 +88,7 @@ std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::moves_for_piece(i
 	return std::vector<Direction>();
 }
 
-std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::process_moves(int piece, size_t row, size_t column)
-{
-	std::vector<Direction> moves;
-
-	if (check_direction(piece, row, column, -1, 0))
-	{
-		moves.push_back(Direction::UP);
-	}
-
-	if (check_direction(piece, row, column, 1, 0))
-	{
-		moves.push_back(Direction::DOWN);
-	}
-
-	if (check_direction(piece, row, column, 0, -1))
-	{
-		moves.push_back(Direction::LEFT);
-	}
-
-	if (check_direction(piece, row, column, 0, 1))
-	{
-		moves.push_back(Direction::RIGHT);
-	}
-
-	return moves;
-}
-
-bool SlidingBrickPuzzle::check_direction(int piece, size_t row, size_t column, int vert_change, int hor_change)
-{
-	size_t i = row, j = column;
-	int i_change = abs(hor_change), j_change = abs(vert_change);
-
-	while (board_[i][j] == piece)
-	{
-		int board_val = board_[i + vert_change][j + hor_change];
-		if (board_val != EMPTY && (piece != MASTER || board_val != GOAL))
-		{
-			return false;
-		}
-		i += i_change;
-		j += j_change;
-	}
-
-	return true;
-}
-
-std::vector<Move> SlidingBrickPuzzle::all_moves()
+std::vector<Move> SlidingBrickPuzzle::all_moves(void)
 {
 	std::vector<Move> moves;
 	std::map<int, bool> seen;
@@ -203,12 +108,8 @@ std::vector<Move> SlidingBrickPuzzle::all_moves()
 			}
 		}
 	}
-	return moves;
-}
 
-bool SlidingBrickPuzzle::is_piece(int piece)
-{
-	return piece >= MASTER;
+	return moves;
 }
 
 void SlidingBrickPuzzle::apply_move(Move move)
@@ -286,12 +187,7 @@ SlidingBrickPuzzle SlidingBrickPuzzle::apply_move_clone(Move move)
 	return new_puzzle;
 }
 
-bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other)
-{
-	return board_ == other.board_;
-}
-
-void SlidingBrickPuzzle::normalize()
+void SlidingBrickPuzzle::normalize(void)
 {
 	int current_index = 3;
 	for (size_t i = 0; i < board_.size(); i++)
@@ -310,6 +206,169 @@ void SlidingBrickPuzzle::normalize()
 			}
 		}
 	}
+}
+
+bool SlidingBrickPuzzle::is_solved(void)
+{
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			if (board_[i][j] == GOAL)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other)
+{
+	return board_ == other.board_;
+}
+
+void SlidingBrickPuzzle::print_board(std::ostream &out)
+{
+	if (board_.size() < 1)
+	{
+		return;
+	}
+
+	out << board_[0].size() << "," << board_.size() << std::endl;
+	for (size_t i = 0; i < board_.size(); i++)
+	{
+		for (size_t j = 0; j < board_[i].size(); j++)
+		{
+			out << board_[i][j] << ",";
+		}
+
+		out << std::endl;
+	}
+}
+
+std::vector<std::string> SlidingBrickPuzzle::split(std::string s, char delim)
+{
+	std::vector<std::string> values;
+	size_t start = 0, end = s.find_first_of(delim, 1);
+	while (end != std::string::npos)
+	{
+		values.push_back(s.substr(start, end - start));
+		start = end + 1;
+		end = s.find_first_of(delim, start + 1);
+	}
+
+	return values;
+}
+
+std::vector<SlidingBrickPuzzle::Direction> SlidingBrickPuzzle::process_moves(int piece, size_t row, size_t column)
+{
+	std::vector<Direction> moves;
+
+	if (check_up(piece, row, column))
+	{
+		moves.push_back(Direction::UP);
+	}
+
+	if (check_down(piece, row, column))
+	{
+		moves.push_back(Direction::DOWN);
+	}
+
+	if (check_left(piece, row, column))
+	{
+		moves.push_back(Direction::LEFT);
+	}
+
+	if (check_right(piece, row, column))
+	{
+		moves.push_back(Direction::RIGHT);
+	}
+
+	return moves;
+}
+
+bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
+{
+	return (board_val == EMPTY) || ((piece == MASTER) && (board_val == GOAL));
+}
+
+bool SlidingBrickPuzzle::check_up(int piece, size_t row, size_t column)
+{
+	while (board_[row][column] == piece)
+	{
+		if (!is_valid_place(piece, board_[row - 1][column]))
+		{
+			return false;
+		}
+
+		column++;
+	}
+
+	return true;
+}
+
+bool SlidingBrickPuzzle::check_down(int piece, size_t row, size_t column)
+{
+	//move the row down until it hits the bottom row of the piece
+	while (board_[row + 1][column] == piece)
+	{
+		row++;
+	}
+
+	while (board_[row][column] == piece)
+	{
+		if (!is_valid_place(piece, board_[row + 1][column]))
+		{
+			return false;
+		}
+
+		column++;
+	}
+
+	return true;
+}
+
+bool SlidingBrickPuzzle::check_left(int piece, size_t row, size_t column)
+{
+	while (board_[row][column] == piece)
+	{
+		if (!is_valid_place(piece, board_[row][column - 1]))
+		{
+			return false;
+		}
+
+		row++;
+	}
+
+	return true;
+}
+
+bool SlidingBrickPuzzle::check_right(int piece, size_t row, size_t column)
+{
+	//move the column to the right until it hits the right edge of the piece
+	while (board_[row][column + 1] == piece)
+	{
+		column++;
+	}
+
+	while (board_[row][column] == piece)
+	{
+		if (!is_valid_place(piece, board_[row][column + 1]))
+		{
+			return false;
+		}
+
+		row++;
+	}
+
+	return true;
+}
+
+bool SlidingBrickPuzzle::is_piece(int piece)
+{
+	return piece >= MASTER;
 }
 
 void SlidingBrickPuzzle::swap_indices(int index1, int index2)
