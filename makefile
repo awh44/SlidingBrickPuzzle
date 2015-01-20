@@ -24,3 +24,4 @@ debug: correct.out
 
 clean:
 	@rm *.out
+	@rm results/results.test
