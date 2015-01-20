@@ -17,9 +17,20 @@ int main(int argc, char *argv[])
 		max_moves = std::stoi(argv[1]);
 	}
 
+	std::string file = "input/SBP-level0.txt";
+	if (argc > 2)
+	{
+		file = argv[2];
+	}
+
 	SlidingBrickPuzzle puzzle;
 	std::cout << "Doing a RandomWalk of level0:" << std::endl;
-	puzzle.load_game("input/SBP-level0.txt");
+	if (!puzzle.load_game(file))
+	{
+		std::cout << "Error loading input file. Terminating." << std::endl;
+		return 1;
+	}
+
 	Walk *walk = new RandomWalk(puzzle, max_moves);
 	walk->walk();
 
