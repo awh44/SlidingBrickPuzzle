@@ -11,5 +11,7 @@ makefile, using the following targets:
 	make correct - this will run the driver drivers/correct.c, and will write the results to
 	results/results.test. Runs tests on the SlidingBrickPuzzle and its related classes
 
+The make clean target can be used to remove the output files and the intermediate .o files.
+
 Please see the headers for comments on the individual functions and their usages. Also included in
 the headers are comments on the classes themselves.

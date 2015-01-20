@@ -1,9 +1,19 @@
+/**
+	Austin Herring
+	January 19, 2015
+	Move.h - header for "Move" class. The Move class encodes the data for a particular Move in the
+	SlidingBrickPuzzle game; that is, it includes information on which piece is to be moved, which
+	direction it will be moved in, and the row and column of the peice's upper leftmost corner.
+*/
+
+
 #ifndef _MOVE_H_
 #define _MOVE_H_
 
 #include <iostream>
 
 #include "SlidingBrickPuzzle.h"
+
 
 class Move
 {

@@ -1,3 +1,12 @@
+/**
+	Austin Herring
+	January 19, 2015
+	SlidingBrickPuzzle.h - header for a SlidingBrickPuzzle class, use to simulate the board of a
+	SlidingBrickPuzzle. Includes a variety of methods to manipulate the board, which is completely
+	maintained internally (with the exception of normalization, which must be specified by the
+	caller after a Move is applied).
+*/
+
 #ifndef _SLIDING_BRICK_PUZZLE_H_
 #define _SLIDING_BRICK_PUZZLE_H_
 
