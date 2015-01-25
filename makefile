@@ -2,6 +2,8 @@ PAGER=less
 COMP=g++
 DEBUG=gdb
 STANDARD=gnu++11
+COMPOPS=-g -Wall -std=$(STANDARD)
+OBJECTOPS=-c -obuild/
 
 .PHONY: random correct clean
 
@@ -14,23 +16,23 @@ correct: results/results.test
 results/results.test: correct.out
 	@./correct.out > results/results.test
 
-random.out: drivers/random.cpp SlidingBrickPuzzle.o Move.o RandomWalk.o 
-	@$(COMP) -orandom.out -g -Wall -std=$(STANDARD) drivers/random.cpp SlidingBrickPuzzle.o Move.o RandomWalk.o 
+random.out: drivers/random.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o 
+	@$(COMP) -orandom.out $(COMPOPS) drivers/random.cpp SlidingBrickPuzzle.o Move.o RandomWalk.o 
 
-correct.out: drivers/correct.cpp src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp src/Move.h src/Move.cpp 
-	@$(COMP) -ocorrect.out -g -Wall -std=$(STANDARD) drivers/correct.cpp src/SlidingBrickPuzzle.cpp src/Move.cpp
+correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
+	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp SlidingBrickPuzzle.o Move.o
 
-SlidingBrickPuzzle.o: src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp
-	@gcc -c -g -Wall -std=$(STANDARD) src/SlidingBrickPuzzle.cpp
+build/SlidingBrickPuzzle.o: src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp
+	@gcc $(OBJECTOPS)SlidingBrickPuzzle.o $(COMPOPS) src/SlidingBrickPuzzle.cpp
 
-Move.o: src/Move.h src/Move.cpp
-	@gcc -c -g -Wall -std=$(STANDARD) src/Move.cpp
+build/Move.o: src/Move.h src/Move.cpp
+	@gcc $(OBJECTOPS)Move.o $(COMPOPS) src/Move.cpp
 
-RandomWalk.o: src/Walk.h src/RandomWalk.h src/RandomWalk.cpp
-	@gcc -c -g -Wall -std=$(STANDARD) src/RandomWalk.cpp
+build/RandomWalk.o: src/Walk.h src/RandomWalk.h src/RandomWalk.cpp
+	@gcc $(OBJECTOPS)RandomWalk.o $(COMPOPS) src/RandomWalk.cpp
 
 debug: correct.out
 	@$(DEBUG) ./correct.out
 
 clean:
-	@rm -rf *.out *.o
+	@rm -rf *.out build/*.o
