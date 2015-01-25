@@ -11,7 +11,7 @@ RandomWalk::RandomWalk(SlidingBrickPuzzle puzzle, size_t max_moves)
 	max_moves_ = max_moves;
 }
 
-void RandomWalk::walk(void)
+bool RandomWalk::walk(void)
 {
 	puzzle_.print_board();
 	std::cout << std::endl;
@@ -31,4 +31,6 @@ void RandomWalk::walk(void)
 		
 		executed_moves++;
 	}
+
+	return puzzle_.is_solved();
 }
