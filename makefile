@@ -5,10 +5,10 @@ STANDARD=gnu++11
 COMPOPS=-g -Wall -std=$(STANDARD)
 OBJECTOPS=-c -obuild/
 
-.PHONY: random correct clean
+.PHONY: walk correct clean
 
-random: random.out
-	@./random.out $(STRAT) $(FILE) $(MOVES)
+walk: walk.out
+	@./walk.out $(STRAT) $(FILE) $(MOVES)
 
 correct: results/results.test
 	@$(PAGER) results/results.test
@@ -16,8 +16,8 @@ correct: results/results.test
 results/results.test: correct.out
 	@./correct.out > results/results.test
 
-random.out: drivers/random.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o
-	@$(COMP) -orandom.out $(COMPOPS) drivers/random.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o
+walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o
+	@$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o
 
 correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
 	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
