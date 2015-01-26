@@ -78,7 +78,7 @@ class SlidingBrickPuzzle
 			returns true if the two SlidingBrickPuzzles are exactly the same
 			@return whether the two SlidingBrickPuzzles are the same (true if they are)
 		*/
-		bool equal(const SlidingBrickPuzzle &other);
+		bool equal(const SlidingBrickPuzzle &other) const;
 
 		/**
 			prints the board to the given output stream (in the same format as for the input files)
@@ -86,7 +86,7 @@ class SlidingBrickPuzzle
 		*/
 		void print_board(std::ostream &out = std::cout);
 
-
+		size_t hash();
 	private:
 		/**
 			returns whether the given piece can move into a position with the value board_val
@@ -176,7 +176,8 @@ class SlidingBrickPuzzle
 		static const int MASTER = 2;
 
 		std::vector<std::vector<int>> board_;
-
 };
 
+
+bool operator==(const SlidingBrickPuzzle &puzzle1, const SlidingBrickPuzzle &puzzle2);
 #endif

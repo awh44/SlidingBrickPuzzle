@@ -43,6 +43,7 @@ int main(void)
 	puzzle.load_game("input/SBP-level0.txt");
 	puzzle.print_board();
 	std::cout << "is_solved == " << puzzle.is_solved() << std::endl;
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
 
 	std::cout << "Moves for the master piece: ";
 	print_moves(puzzle.moves_for_piece(2));
@@ -56,20 +57,24 @@ int main(void)
 	
 	std::cout << "Moving 3 left:" << std::endl;
 	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
-	puzzle.print_board();	
+	puzzle.print_board();
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
 
 	std::cout << "Moving 2 left:" << std::endl;
 	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::LEFT, 2, 2));
 	puzzle.print_board();
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
 
 	std::cout << "Moving 4 down:" << std::endl;
 	puzzle.apply_move(Move(4, SlidingBrickPuzzle::Direction::DOWN, 1, 3));
 	puzzle.print_board();
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
 
 	std::cout << "Moving 3 right twice:" << std::endl;
 	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 1));
 	puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 2));
 	puzzle.print_board();
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
 
 	std::cout << "Moving 2 up:" << std::endl;
 	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 2, 1));
@@ -80,6 +85,10 @@ int main(void)
 	std::cout << "Moving 2 up again:" << std::endl;
 	puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
 	puzzle.print_board();
+
+	std::cout << "Hash value: " << puzzle.hash();
+
+	std::cout << std::endl;
 
 	std::cout << "Copying board and applying move of 2 down:" << std::endl;
 	SlidingBrickPuzzle new_p = puzzle.apply_move_clone(Move(2, SlidingBrickPuzzle::Direction::DOWN, 0, 1));
@@ -106,6 +115,6 @@ int main(void)
 	abnormal.print_board();
 
 	std::cout << std::endl;
-	
+
 	return 0;
 }

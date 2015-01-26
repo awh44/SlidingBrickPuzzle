@@ -66,6 +66,7 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 			{
 				return false;
 			}
+
 		}
 	}
 
@@ -224,7 +225,7 @@ bool SlidingBrickPuzzle::is_solved(void)
 	return true;
 }
 
-bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other)
+bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other) const
 {
 	return board_ == other.board_;
 }
@@ -246,6 +247,11 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 
 		out << std::endl;
 	}
+}
+
+size_t SlidingBrickPuzzle::hash()
+{
+	return 0;
 }
 
 bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
@@ -387,4 +393,9 @@ void SlidingBrickPuzzle::swap_indices(int index1, int index2)
 			}
 		}
 	}	
+}
+
+bool operator==(const SlidingBrickPuzzle &puzzle1, const SlidingBrickPuzzle &puzzle2)
+{
+	return puzzle1.equal(puzzle2);
 }
