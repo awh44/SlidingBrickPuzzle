@@ -19,6 +19,7 @@ class Move
 {
 	public:
 		Move(int piece, SlidingBrickPuzzle::Direction direction, size_t row, size_t column);
+		Move(const Move &other);
 
 		/**
 			gets the value of the piece associated with the Move

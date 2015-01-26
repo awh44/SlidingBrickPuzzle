@@ -10,6 +10,14 @@ Move::Move(int piece, SlidingBrickPuzzle::Direction direction, size_t row, size_
 	column_ = column;
 }
 
+Move::Move(const Move &other)
+{
+	piece_ = other.piece_;
+	direction_ = other.direction_;
+	row_ = other.row_;
+	column_ = other.column_;
+}
+
 int Move::get_piece(void)
 {
 	return piece_;
