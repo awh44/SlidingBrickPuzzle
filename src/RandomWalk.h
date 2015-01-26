@@ -24,8 +24,9 @@ class RandomWalk : public Walk
 		/**
 			does a random walk of the SlidingBrickPuzzle member variable puzzle_
 		*/
-		bool void walk(void);
+		bool walk(void);
 
 	private:
+		SlidingBrickPuzzle puzzle_;
 		size_t max_moves_;
 };

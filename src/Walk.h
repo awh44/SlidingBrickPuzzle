@@ -19,10 +19,6 @@ class Walk
 			does a walk of the SlidingBrickPuzzle puzzle_
 		*/
 		virtual bool walk(void) = 0;
-
-	protected:
-		SlidingBrickPuzzle puzzle_;
-		
 };
 
 #endif
