@@ -4,11 +4,11 @@
 #include <cstdlib>
 
 #include "../src/SlidingBrickPuzzle.h"
-#include "../src/Walk.h"
-#include "../src/RandomWalk.h"
-#include "../src/BreadthFirstWalk.h"
-#include "../src/DepthFirstWalk.h"
-#include "../src/IterativeDeepeningWalk.h"
+#include "../src/walks/Walk.h"
+#include "../src/walks/RandomWalk.h"
+#include "../src/walks/BreadthFirstWalk.h"
+#include "../src/walks/DepthFirstWalk.h"
+#include "../src/walks/IterativeDeepeningWalk.h"
 
 int main(int argc, char *argv[])
 {

@@ -1,5 +1,5 @@
 #include "BreadthFirstWalk.h"
-#include "../../../../Personal/Queue/Queue.h"
+#include "../structures/Queue.h"
 
 BreadthFirstWalk::BreadthFirstWalk(SlidingBrickPuzzle puzzle)
 	: UninformedWalk(puzzle)

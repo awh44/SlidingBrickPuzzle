@@ -1,11 +1,11 @@
 #ifndef _UNINFORMED_WALK_H_
 #define _UNINFORMED_WALK_H_
 
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 #include "Walk.h"
-#include "MoveNode.h"
-#include "../../../../Personal/Stack/Collection.h"
-#include "../../../../Personal/Dictionary/Dictionary.h"
+#include "../moves/MoveNode.h"
+#include "../structures/Collection.h"
+#include "../structures//Dictionary.h"
 
 class UninformedWalk : public Walk
 {

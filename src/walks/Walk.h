@@ -9,7 +9,7 @@
 #ifndef _WALK_H_
 #define _WALK_H_
 
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 
 class Walk
 {

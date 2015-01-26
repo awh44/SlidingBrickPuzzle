@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 
 
 class Move

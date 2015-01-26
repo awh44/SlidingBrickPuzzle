@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 #include "Move.h"
 
 class MoveNode

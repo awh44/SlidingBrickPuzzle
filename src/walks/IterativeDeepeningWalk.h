@@ -1,7 +1,7 @@
 #ifndef _ITERATIVE_DEEPENINDG_WALK_H_
 #define _ITERATIVE_DEEPENINDG_WALK_H_
 
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 #include "DepthFirstWalk.h"
 
 class IterativeDeepeningWalk : public DepthFirstWalk

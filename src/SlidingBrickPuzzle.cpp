@@ -5,7 +5,7 @@
 #include <map>
 
 #include "SlidingBrickPuzzle.h"
-#include "Move.h"
+#include "moves/Move.h"
 
 SlidingBrickPuzzle::SlidingBrickPuzzle(const SlidingBrickPuzzle &orig)
 {

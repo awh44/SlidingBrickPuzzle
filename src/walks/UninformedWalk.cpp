@@ -1,5 +1,5 @@
 #include "UninformedWalk.h"
-#include "Move.h"
+#include "../moves/Move.h"
 
 UninformedWalk::UninformedWalk(SlidingBrickPuzzle puzzle)
 	: closed_list_(1)

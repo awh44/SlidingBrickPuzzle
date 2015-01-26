@@ -25,26 +25,26 @@ correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
 build/SlidingBrickPuzzle.o: src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp
 	@gcc $(OBJECTOPS)SlidingBrickPuzzle.o $(COMPOPS) src/SlidingBrickPuzzle.cpp
 
-build/Move.o: src/Move.h src/Move.cpp
-	@gcc $(OBJECTOPS)Move.o $(COMPOPS) src/Move.cpp
+build/Move.o: src/moves/Move.h src/moves/Move.cpp
+	@gcc $(OBJECTOPS)Move.o $(COMPOPS) src/moves/Move.cpp
 
-build/RandomWalk.o: src/Walk.h src/RandomWalk.h src/RandomWalk.cpp
-	@gcc $(OBJECTOPS)RandomWalk.o $(COMPOPS) src/RandomWalk.cpp
+build/RandomWalk.o: src/walks/Walk.h src/walks/RandomWalk.h src/walks/RandomWalk.cpp
+	@gcc $(OBJECTOPS)RandomWalk.o $(COMPOPS) src/walks/RandomWalk.cpp
 
-build/UninformedWalk.o: src/Walk.h src/UninformedWalk.h src/UninformedWalk.cpp 
-	@gcc $(OBJECTOPS)UninformedWalk.o $(COMPOPS) src/UninformedWalk.cpp
+build/UninformedWalk.o: src/walks/Walk.h src/walks/UninformedWalk.h src/walks/UninformedWalk.cpp 
+	@gcc $(OBJECTOPS)UninformedWalk.o $(COMPOPS) src/walks/UninformedWalk.cpp
 
-build/BreadthFirstWalk.o: src/BreadthFirstWalk.h src/BreadthFirstWalk.cpp
-	@gcc $(OBJECTOPS)BreadthFirstWalk.o $(COMPOPS) src/BreadthFirstWalk.cpp
+build/BreadthFirstWalk.o: src/walks/UninformedWalk.h src/walks/BreadthFirstWalk.h src/walks/BreadthFirstWalk.cpp
+	@gcc $(OBJECTOPS)BreadthFirstWalk.o $(COMPOPS) src/walks/BreadthFirstWalk.cpp
 
-build/DepthFirstWalk.o: src/DepthFirstWalk.h src/DepthFirstWalk.cpp
-	@gcc $(OBJECTOPS)DepthFirstWalk.o $(COMPOPS) src/DepthFirstWalk.cpp
+build/DepthFirstWalk.o: src/walks/UninformedWalk.h src/walks/DepthFirstWalk.h src/walks/DepthFirstWalk.cpp
+	@gcc $(OBJECTOPS)DepthFirstWalk.o $(COMPOPS) src/walks/DepthFirstWalk.cpp
 
-build/IterativeDeepeningWalk.o: src/IterativeDeepeningWalk.h src/IterativeDeepeningWalk.cpp
-	@gcc $(OBJECTOPS)IterativeDeepeningWalk.o $(COMPOPS) src/IterativeDeepeningWalk.cpp
+build/IterativeDeepeningWalk.o: src/walks/DepthFirstWalk.h src/walks/IterativeDeepeningWalk.h src/walks/IterativeDeepeningWalk.cpp
+	@gcc $(OBJECTOPS)IterativeDeepeningWalk.o $(COMPOPS) src/walks/IterativeDeepeningWalk.cpp
 
-build/MoveNode.o: src/MoveNode.h src/MoveNode.cpp
-	@gcc $(OBJECTOPS)MoveNode.o $(COMPOPS) src/MoveNode.cpp
+build/MoveNode.o: src/moves/MoveNode.h src/moves/MoveNode.cpp
+	@gcc $(OBJECTOPS)MoveNode.o $(COMPOPS) src/moves/MoveNode.cpp
 
 debug: correct.out
 	@$(DEBUG) ./correct.out

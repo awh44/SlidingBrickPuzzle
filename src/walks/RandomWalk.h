@@ -8,7 +8,7 @@
 */
 
 #include "Walk.h"
-#include "SlidingBrickPuzzle.h"
+#include "../SlidingBrickPuzzle.h"
 
 class RandomWalk : public Walk
 {

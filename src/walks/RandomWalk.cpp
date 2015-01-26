@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 #include "RandomWalk.h"
-#include "Move.h"
+#include "../moves/Move.h"
 
 RandomWalk::RandomWalk(SlidingBrickPuzzle puzzle, size_t max_moves)
 {
