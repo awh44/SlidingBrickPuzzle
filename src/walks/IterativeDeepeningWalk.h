@@ -12,7 +12,7 @@ class IterativeDeepeningWalk : public DepthFirstWalk
 		bool walk(void);
 	
 	protected:
-		void expand(MoveNode *curr_node);
+		void insert_all(MoveNode *curr_node);
 
 	private:
 		SlidingBrickPuzzle puzzle_;

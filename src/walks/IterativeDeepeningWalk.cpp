@@ -24,10 +24,10 @@ bool IterativeDeepeningWalk::walk(void)
 	return false;
 }
 
-void IterativeDeepeningWalk::expand(MoveNode *curr_node)
+void IterativeDeepeningWalk::insert_all(MoveNode *curr_node)
 {
 	if (curr_node->get_cost() < max_)
 	{
-		DepthFirstWalk::expand(curr_node);
+		DepthFirstWalk::insert_all(curr_node);
 	}
 }

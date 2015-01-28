@@ -20,7 +20,7 @@ bool UninformedWalk::walk(void)
 		return true;
 	}
 
-	expand(root_);
+	insert_all(root_);
 	while (!is_over())
 	{
 		MoveNode *next = open_list_->get();
@@ -30,10 +30,11 @@ bool UninformedWalk::walk(void)
 			if (next->get_puzzle().is_solved())
 			{
 				print_solution(next);
+				next->get_puzzle().print_board();
 				return true;
 			}
 			closed_list_.insert(next->get_puzzle());
-			expand(next);
+			insert_all(next);
 		}
 	}
 
@@ -54,7 +55,7 @@ void UninformedWalk::reset()
 }
 
 
-void UninformedWalk::expand(MoveNode *curr_node)
+void UninformedWalk::insert_all(MoveNode *curr_node)
 {
 	std::vector<Move> moves = curr_node->get_puzzle().all_moves();
 	for (size_t i = 0; i < moves.size(); i++)

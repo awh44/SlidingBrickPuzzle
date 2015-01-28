@@ -18,7 +18,7 @@ class UninformedWalk : public Walk
 	protected:
 		void init(SlidingBrickPuzzle puzzle);
 		void reset();
-		void expand(MoveNode *node);
+		void insert_all(MoveNode *node);
 
 		MoveNode *root_;
 		Dictionary<SlidingBrickPuzzle> closed_list_;
