@@ -32,16 +32,19 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
+	std::cout << "Doing a ";
 	Walk *walk;
 	size_t max_moves = 20;
 	switch (argv[1][0])
 	{
 		case 'B':
 		case 'b':	
+			std::cout << "BreadthFirst";
 			walk = new BreadthFirstWalk(puzzle);
 			break;
 		case 'D':
 		case 'd':
+			std::cout << "DepthFirst";
 			walk = new DepthFirstWalk(puzzle);
 			break;
 		case 'I':
@@ -51,6 +54,7 @@ int main(int argc, char *argv[])
 				max_moves = std::stoi(argv[3]);
 			}
 
+			std::cout << "(" << max_moves << ") IterativeDeepening";
 			walk = new IterativeDeepeningWalk(puzzle, max_moves);
 			break;
 		case 'R':
@@ -60,13 +64,15 @@ int main(int argc, char *argv[])
 				max_moves = std::stoi(argv[3]);
 			}
 
+			std::cout << "(" << max_moves << ") Random";
 			walk = new RandomWalk(puzzle, max_moves);
 			break;
 		default:
-			std::cout << "Unknown Walk type. Please use Breadth, Depth, or Random" << std::endl;
+			std::cout << "Unknown Walk type. Please use Breadth, Depth, Iterative, or Random" << std::endl;
+			return 1;
 	}
 
-	std::cout << "Doing a Walk of " << file << ":" << std::endl;
+	std::cout << "Walk of " << file << ":" << std::endl;
 	walk->walk();
 
 	delete walk;
