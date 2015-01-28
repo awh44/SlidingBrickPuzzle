@@ -13,7 +13,7 @@
 int main(int argc, char *argv[])
 {
 	srand(time(NULL));
-	if (argc < 1)
+	if (argc < 2)
 	{
 		std::cout << "Please include the search type as the first commandl ine argument." << std::endl;
 		return 1;
