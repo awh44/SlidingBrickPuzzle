@@ -1,23 +1,17 @@
-#ifndef _ITERATIVE_DEEPENINDG_WALK_H_
-#define _ITERATIVE_DEEPENINDG_WALK_H_
+#ifndef _ITERATIVE_DEEPENING_WALK_H_
+#define _ITERATIVE_DEEPENING_WALK_H_
 
-#include "../SlidingBrickPuzzle.h"
-#include "DepthFirstWalk.h"
+#include "DepthLimitedWalk.h"
 
-class IterativeDeepeningWalk : public DepthFirstWalk
+class IterativeDeepeningWalk : public Walk
 {
 	public:
-		IterativeDeepeningWalk(SlidingBrickPuzzle puzzle, size_t max);
-
+		IterativeDeepeningWalk(SlidingBrickPuzzle puzzle, size_t max_depth);
 		bool walk(void);
 	
-	protected:
-		void insert_all(MoveNode *curr_node);
-
 	private:
 		SlidingBrickPuzzle puzzle_;
 		size_t max_;
-		size_t curr_depth_;
 };
 
 #endif

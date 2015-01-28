@@ -8,6 +8,7 @@
 #include "../src/walks/RandomWalk.h"
 #include "../src/walks/BreadthFirstWalk.h"
 #include "../src/walks/DepthFirstWalk.h"
+#include "../src/walks/DepthLimitedWalk.h"
 #include "../src/walks/IterativeDeepeningWalk.h"
 
 int main(int argc, char *argv[])
@@ -56,6 +57,16 @@ int main(int argc, char *argv[])
 
 			std::cout << "(" << max_moves << ") IterativeDeepening";
 			walk = new IterativeDeepeningWalk(puzzle, max_moves);
+			break;
+		case 'L':
+		case 'l':
+			if (argc > 3)
+			{
+				max_moves = std::stoi(argv[3]);
+			}
+
+			std::cout << "(" << max_moves << ") DepthLimited";
+			walk = new DepthLimitedWalk(puzzle, max_moves);
 			break;
 		case 'R':
 		case 'r':

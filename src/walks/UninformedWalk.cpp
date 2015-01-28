@@ -4,7 +4,8 @@
 UninformedWalk::UninformedWalk(SlidingBrickPuzzle puzzle)
 	: closed_list_(1)
 {
-	init(puzzle);
+	root_ = new MoveNode(puzzle);
+	closed_list_.insert(puzzle);
 }
 
 UninformedWalk::~UninformedWalk()
@@ -21,7 +22,7 @@ bool UninformedWalk::walk(void)
 	}
 
 	insert_all(root_);
-	while (!is_over())
+	while (!open_list_->empty())
 	{
 		MoveNode *next = open_list_->get();
 		open_list_->remove();
@@ -41,20 +42,6 @@ bool UninformedWalk::walk(void)
 	return false;
 }
 
-void UninformedWalk::init(SlidingBrickPuzzle puzzle)
-{
-	root_ = new MoveNode(puzzle);
-	closed_list_.insert(puzzle);
-}
-
-void UninformedWalk::reset()
-{
-	delete root_;
-	closed_list_.empty_dictionary();
-	open_list_->empty_collection();
-}
-
-
 void UninformedWalk::insert_all(MoveNode *curr_node)
 {
 	std::vector<Move> moves = curr_node->get_puzzle().all_moves();
@@ -64,11 +51,6 @@ void UninformedWalk::insert_all(MoveNode *curr_node)
 		curr_node->add_child(new_node);
 		open_list_->add(new_node);
 	}
-}
-
-bool UninformedWalk::is_over()
-{
-	return open_list_->empty();
 }
 
 void UninformedWalk::print_solution(MoveNode *solution_node)

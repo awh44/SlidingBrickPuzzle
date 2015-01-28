@@ -18,7 +18,7 @@ class UninformedWalk : public Walk
 	protected:
 		void init(SlidingBrickPuzzle puzzle);
 		void reset();
-		void insert_all(MoveNode *node);
+		virtual void insert_all(MoveNode *node);
 
 		MoveNode *root_;
 		Dictionary<SlidingBrickPuzzle> closed_list_;
@@ -26,7 +26,6 @@ class UninformedWalk : public Walk
 		Collection<MoveNode*> *open_list_;
 
 	private:
-		bool is_over();
 		void print_solution(MoveNode *solution_node);
 
 };

@@ -1,4 +1,4 @@
-sAGER=less
+PAGER=less
 COMP=g++
 DEBUG=gdb
 STANDARD=gnu++11
@@ -16,8 +16,8 @@ correct: results/results.test
 results/results.test: correct.out
 	@./correct.out > results/results.test
 
-walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o
-	$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o
+walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/DepthLimitedWalk.o build/IterativeDeepeningWalk.o
+	$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o build/DepthLimitedWalk.o
 
 correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
 	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
@@ -40,8 +40,11 @@ build/BreadthFirstWalk.o: src/walks/UninformedWalk.h src/walks/BreadthFirstWalk.
 build/DepthFirstWalk.o: src/walks/UninformedWalk.h src/walks/DepthFirstWalk.h src/walks/DepthFirstWalk.cpp
 	@gcc $(OBJECTOPS)DepthFirstWalk.o $(COMPOPS) src/walks/DepthFirstWalk.cpp
 
-build/IterativeDeepeningWalk.o: src/walks/DepthFirstWalk.h src/walks/IterativeDeepeningWalk.h src/walks/IterativeDeepeningWalk.cpp
+build/IterativeDeepeningWalk.o: src/walks/IterativeDeepeningWalk.h src/walks/IterativeDeepeningWalk.cpp
 	gcc $(OBJECTOPS)IterativeDeepeningWalk.o $(COMPOPS) src/walks/IterativeDeepeningWalk.cpp
+
+build/DepthLimitedWalk.o: src/walks/DepthLimitedWalk.h src/walks/DepthLimitedWalk.cpp
+	gcc $(OBJECTOPS)DepthLimitedWalk.o $(COMPOPS) src/walks/DepthLimitedWalk.cpp
 
 build/MoveNode.o: src/moves/MoveNode.h src/moves/MoveNode.cpp
 	@gcc $(OBJECTOPS)MoveNode.o $(COMPOPS) src/moves/MoveNode.cpp

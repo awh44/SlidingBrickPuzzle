@@ -1,33 +1,21 @@
 #include "IterativeDeepeningWalk.h"
-	
-IterativeDeepeningWalk::IterativeDeepeningWalk(SlidingBrickPuzzle puzzle, size_t max)
-	: DepthFirstWalk(puzzle)
+
+IterativeDeepeningWalk::IterativeDeepeningWalk(SlidingBrickPuzzle puzzle, size_t max_depth)
 {
 	puzzle_ = puzzle;
-	max_ = max;
+	max_ = max_depth;
 }
 
 bool IterativeDeepeningWalk::walk(void)
 {
-	for (size_t i = 0; i < max_; i++)
+	for (size_t i = 1; i <= max_; i++)
 	{
-		curr_depth_ = i + 1;
-		if (DepthFirstWalk::walk())
+		DepthLimitedWalk limited(puzzle_, i);
+		if (limited.walk())
 		{
 			return true;
 		}
-
-		//reset();
-		init(puzzle_);
 	}
 
 	return false;
-}
-
-void IterativeDeepeningWalk::insert_all(MoveNode *curr_node)
-{
-	if (curr_node->get_cost() < max_)
-	{
-		DepthFirstWalk::insert_all(curr_node);
-	}
 }
