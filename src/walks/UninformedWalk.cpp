@@ -26,14 +26,15 @@ bool UninformedWalk::walk(void)
 	{
 		MoveNode *next = open_list_->get();
 		open_list_->remove();
+		if (next->get_puzzle().is_solved())
+		{
+			print_solution(next);
+			next->get_puzzle().print_board();
+			return true;
+		}
+
 		if (!closed_list_.member(next->get_puzzle()))
 		{
-			if (next->get_puzzle().is_solved())
-			{
-				print_solution(next);
-				next->get_puzzle().print_board();
-				return true;
-			}
 			closed_list_.insert(next->get_puzzle());
 			insert_all(next);
 		}
