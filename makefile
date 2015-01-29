@@ -32,18 +32,18 @@ build/RandomWalk.o: src/walks/Walk.h src/walks/RandomWalk.h src/walks/RandomWalk
 	@gcc $(OBJECTOPS)RandomWalk.o $(COMPOPS) src/walks/RandomWalk.cpp
 
 build/UninformedWalk.o: src/walks/Walk.h src/walks/UninformedWalk.h src/walks/UninformedWalk.cpp 
-	@gcc $(OBJECTOPS)UninformedWalk.o $(COMPOPS) src/walks/UninformedWalk.cpp
+	gcc $(OBJECTOPS)UninformedWalk.o $(COMPOPS) src/walks/UninformedWalk.cpp
 
-build/BreadthFirstWalk.o: src/walks/UninformedWalk.h src/walks/BreadthFirstWalk.h src/walks/BreadthFirstWalk.cpp
+build/BreadthFirstWalk.o: src/walks/UninformedWalk.h src/walks/BreadthFirstWalk.h src/walks/BreadthFirstWalk.cpp src/structures/Collection.h src/structures/Queue.h
 	@gcc $(OBJECTOPS)BreadthFirstWalk.o $(COMPOPS) src/walks/BreadthFirstWalk.cpp
 
-build/DepthFirstWalk.o: src/walks/UninformedWalk.h src/walks/DepthFirstWalk.h src/walks/DepthFirstWalk.cpp
+build/DepthFirstWalk.o: src/walks/UninformedWalk.h src/walks/DepthFirstWalk.h src/walks/DepthFirstWalk.cpp src/structures/Collection.h src/structures/Stack.h
 	@gcc $(OBJECTOPS)DepthFirstWalk.o $(COMPOPS) src/walks/DepthFirstWalk.cpp
 
 build/IterativeDeepeningWalk.o: src/walks/IterativeDeepeningWalk.h src/walks/IterativeDeepeningWalk.cpp
 	@gcc $(OBJECTOPS)IterativeDeepeningWalk.o $(COMPOPS) src/walks/IterativeDeepeningWalk.cpp
 
-build/DepthLimitedWalk.o: src/walks/DepthLimitedWalk.h src/walks/DepthLimitedWalk.cpp
+build/DepthLimitedWalk.o: src/walks/DepthLimitedWalk.h src/walks/DepthLimitedWalk.cpp src/structures/Collection.h src/structures/Stack.h
 	@gcc $(OBJECTOPS)DepthLimitedWalk.o $(COMPOPS) src/walks/DepthLimitedWalk.cpp
 
 build/MoveNode.o: src/moves/MoveNode.h src/moves/MoveNode.cpp

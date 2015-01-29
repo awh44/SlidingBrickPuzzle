@@ -18,13 +18,14 @@ class MoveNode
 		Move get_move();
 		unsigned int get_cost();
 		void add_child(MoveNode *child);
-
+		size_t number_children();
 	private:
+		size_t remove_from_parent();
+		
 		SlidingBrickPuzzle puzzle_;
 		MoveNode *parent_;
 		Move move_;
 		unsigned int cost_;
 		std::vector<MoveNode*> children_;
 };
-
 #endif

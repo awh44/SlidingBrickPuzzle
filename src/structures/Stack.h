@@ -22,7 +22,7 @@ class Stack : public Collection<T>
 		void add(T x);
 		void remove();
 		void empty_collection();
-
+		bool contains(T a, bool (*comp)(T a, T b));
 	private:
 		Node<T> *head_;
 };
@@ -96,5 +96,21 @@ template <class T>
 void Stack<T>::empty_collection()
 {
 	empty_stack();
+}
+
+template <class T>
+bool Stack<T>::contains(T a, bool (*comp)(T a, T b))
+{
+	Node<T> *node = head_;
+	while (node != NULL)
+	{
+		if (comp(a, node->get_data()))
+		{
+			return true;
+		}
+		node = node->get_next();
+	}
+
+	return false;
 }
 #endif

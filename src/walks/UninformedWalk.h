@@ -14,20 +14,14 @@ class UninformedWalk : public Walk
 		virtual ~UninformedWalk();
 		
 		virtual bool walk(void);
-
 	protected:
-		void init(SlidingBrickPuzzle puzzle);
-		void reset();
 		virtual void insert_all(MoveNode *node);
-
-		MoveNode *root_;
-		Dictionary<SlidingBrickPuzzle> closed_list_;
-
+		virtual void insertion_deletion(MoveNode *node) = 0;
 		Collection<MoveNode*> *open_list_;
 
 	private:
+		MoveNode *root_;
 		void print_solution(MoveNode *solution_node);
-
 };
 
 #endif

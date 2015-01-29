@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstddef>
 #include "MoveNode.h"
 
@@ -28,6 +29,7 @@ MoveNode::MoveNode(MoveNode *parent, Move move)
 
 MoveNode::~MoveNode()
 {
+	//remove_from_parent();
 	for (size_t i = 0; i < children_.size(); i++)
 	{
 		delete children_[i];
@@ -57,4 +59,24 @@ unsigned int MoveNode::get_cost()
 void MoveNode::add_child(MoveNode *child)
 {
 	children_.push_back(child);
+}
+
+size_t MoveNode::number_children()
+{
+	return children_.size();
+}
+
+size_t MoveNode::remove_from_parent()
+{
+	if (parent_ == NULL)
+	{
+		return 0;
+	}
+
+	parent_->children_.erase(std::remove(std::begin(parent_->children_), std::end(parent_->children_), this), std::end(parent_->children_));
+	if (parent_->children_.size() == 0)
+	{
+		delete parent_;
+	}
+	return parent_->children_.size();
 }

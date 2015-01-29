@@ -22,6 +22,7 @@ class Queue : public Collection<T>
 		void add(T x);
 		void remove();
 		void empty_collection();
+		bool contains(T x, bool (*comp)(T a, T b));
 
 	private:
 		Node<T> *front_;
@@ -100,5 +101,22 @@ template <class T>
 void Queue<T>::empty_collection()
 {
 	empty_queue();
+}
+
+template <class T>
+bool Queue<T>::contains(T x, bool (*comp)(T a, T b))
+{
+	Node<T> *node = front_->get_next();
+	while (node != NULL)
+	{
+		if (comp(x, node->get_data()))
+		{
+			return true;
+		}
+
+		node = node->get_next();
+	}
+
+	return false;
 }
 #endif

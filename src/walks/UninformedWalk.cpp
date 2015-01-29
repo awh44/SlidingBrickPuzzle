@@ -2,10 +2,8 @@
 #include "../moves/Move.h"
 
 UninformedWalk::UninformedWalk(SlidingBrickPuzzle puzzle)
-	: closed_list_(1)
 {
 	root_ = new MoveNode(puzzle);
-	closed_list_.insert(puzzle);
 }
 
 UninformedWalk::~UninformedWalk()
@@ -33,11 +31,7 @@ bool UninformedWalk::walk(void)
 			return true;
 		}
 
-		if (!closed_list_.member(next->get_puzzle()))
-		{
-			closed_list_.insert(next->get_puzzle());
-			insert_all(next);
-		}
+		insertion_deletion(next);
 	}
 
 	return false;
