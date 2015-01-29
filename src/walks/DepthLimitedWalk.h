@@ -10,6 +10,7 @@ class DepthLimitedWalk : public Walk
 {
 	public:
 		DepthLimitedWalk(SlidingBrickPuzzle puzzle, size_t max_depth);
+		~DepthLimitedWalk();
 		virtual bool walk(void);
 
 	protected:

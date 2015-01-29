@@ -10,6 +10,12 @@ DepthLimitedWalk::DepthLimitedWalk(SlidingBrickPuzzle puzzle, size_t max_depth)
 	max_ = max_depth;
 }
 
+DepthLimitedWalk::~DepthLimitedWalk()
+{
+	delete root_;
+	delete open_list_;
+}
+
 //this algorithm is extremely close to the one in UninformedWalk.h (with the Stack as the
 //open_list_; then, basically just override small portions of methods to ignore the closed_list_
 //and then change insert_all to only call the parent method if the cost condition is satisfied),

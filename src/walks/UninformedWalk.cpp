@@ -9,7 +9,9 @@ UninformedWalk::UninformedWalk(SlidingBrickPuzzle puzzle)
 UninformedWalk::~UninformedWalk()
 {
 	//Node implementation handles deletion of rest of tree/graph
-	delete root_;	
+	delete root_;
+	open_list_->empty_collection();
+	delete open_list_;
 }
 
 bool UninformedWalk::walk(void)
