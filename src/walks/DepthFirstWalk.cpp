@@ -14,8 +14,7 @@ void DepthFirstWalk::insertion_deletion(MoveNode *node)
 		insert_all(node);
 	}
 /*
-	This unused code was to be used to improve the memory usage of DFS, but managing the memory
-	proved difficult.
+	This unused code was to be used to improve the memory usage of DFS.
 	if (node->number_children() == 0)
 	{
 		//not a solution and doesn't have any children, so delete it

@@ -17,13 +17,13 @@ class UninformedWalk : public Walk
 	protected:
 		virtual void insert_all(MoveNode *node);
 		virtual void insertion_deletion(MoveNode *node) = 0;
+		MoveNode *root_;
 		Collection<MoveNode*> *open_list_;
 
 	private:
 		void print_solution(MoveNode *solution_node);
 		size_t print_solution_recursive(MoveNode *solution_node, size_t num_moves);
 		
-		MoveNode *root_;
 		size_t nodes_generated_;
 };
 
