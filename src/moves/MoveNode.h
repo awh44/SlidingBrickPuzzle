@@ -1,14 +1,20 @@
 #ifndef _H_MOVENODE_
 #define _H_MOVENODE_
 
+#include <functional>
 #include <vector>
 
 #include "../SlidingBrickPuzzle.h"
 #include "Move.h"
 
+template <class T>
+class MoveNodeHash;
+
 class MoveNode
 {
 	public:
+		static bool compare_nodes(MoveNode *a, MoveNode *b);
+
 		MoveNode(SlidingBrickPuzzle puzzle);
 		MoveNode(MoveNode *parent = NULL, Move move = Move(0, SlidingBrickPuzzle::Direction::UP, 0, 0));
 		~MoveNode();
@@ -19,7 +25,6 @@ class MoveNode
 		unsigned int get_cost();
 		void add_child(MoveNode *child);
 		size_t number_children();
-
 		void remove_from_parent();
 
 	private:
@@ -31,4 +36,14 @@ class MoveNode
 		unsigned int cost_;
 		std::vector<MoveNode*> children_;
 };
+
+template <>
+struct MoveNodeHash<MoveNode*>
+{
+	size_t operator()(MoveNode* const& node) const 
+	{
+		return node->get_puzzle().hash();
+	}
+};
+
 #endif

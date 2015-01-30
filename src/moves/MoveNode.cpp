@@ -2,6 +2,11 @@
 #include <cstddef>
 #include "MoveNode.h"
 
+bool MoveNode::compare_nodes(MoveNode *a, MoveNode *b)
+{
+	return a->get_puzzle() == b->get_puzzle();
+}
+
 MoveNode::MoveNode(SlidingBrickPuzzle puzzle)
 	: move_(0, SlidingBrickPuzzle::Direction::UP, 0, 0)
 {

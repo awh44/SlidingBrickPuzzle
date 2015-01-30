@@ -10,8 +10,6 @@ class BreadthFirstWalk : public UninformedWalk
 		BreadthFirstWalk(SlidingBrickPuzzle puzzle);
 	protected:
 		void insertion_deletion(MoveNode *node);
-	private:
-		static bool compare_nodes(MoveNode *a, MoveNode *b);
 };
 
 #endif
