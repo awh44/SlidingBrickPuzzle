@@ -40,6 +40,7 @@ template <class T>
 Queue<T>::~Queue()
 {
 	empty_queue();
+	delete front_;
 }
 
 template <class T>

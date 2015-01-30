@@ -12,16 +12,13 @@ void DepthFirstWalk::insertion_deletion(MoveNode *node)
 	if (!been_seen(node))
 	{
 		insert_all(node);
-/*		if (node->number_children() == 0)
-		{
-			delete node;
-		}
-*/
 	}
 /*
-	else
+	This unused code was to be used to improve the memory usage of DFS, but managing the memory
+	proved difficult.
+	if (node->number_children() == 0)
 	{
-		//not going to have any children, so can get rid of it
+		//not a solution and doesn't have any children, so delete it
 		delete node;
 	}
 */
@@ -29,14 +26,15 @@ void DepthFirstWalk::insertion_deletion(MoveNode *node)
 
 bool DepthFirstWalk::been_seen(MoveNode *node)
 {
-	MoveNode *anscestor = node->get_parent();
-	while (anscestor != NULL)
+	//check only the current path
+	MoveNode *ancestor = node->get_parent();
+	while (ancestor != NULL)
 	{
-		if (node->get_puzzle() == anscestor->get_puzzle())
+		if (node->get_puzzle() == ancestor->get_puzzle())
 		{
 			return true;
 		}
-		anscestor = anscestor->get_parent();
+		ancestor = ancestor->get_parent();
 	}
 	
 	return false;

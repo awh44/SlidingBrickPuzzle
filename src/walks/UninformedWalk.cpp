@@ -4,13 +4,13 @@
 UninformedWalk::UninformedWalk(SlidingBrickPuzzle puzzle)
 {
 	root_ = new MoveNode(puzzle);
+	nodes_generated_ = 0;
 }
 
 UninformedWalk::~UninformedWalk()
 {
 	//Node implementation handles deletion of rest of tree/graph
 	delete root_;
-	open_list_->empty_collection();
 	delete open_list_;
 }
 
@@ -29,10 +29,8 @@ bool UninformedWalk::walk(void)
 		if (next->get_puzzle().is_solved())
 		{
 			print_solution(next);
-			next->get_puzzle().print_board();
 			return true;
 		}
-
 		insertion_deletion(next);
 	}
 
@@ -48,15 +46,26 @@ void UninformedWalk::insert_all(MoveNode *curr_node)
 		curr_node->add_child(new_node);
 		open_list_->add(new_node);
 	}
+
+	nodes_generated_ += moves.size();
 }
 
 void UninformedWalk::print_solution(MoveNode *solution_node)
 {
+	size_t num_moves = print_solution_recursive(solution_node, 0);
+	solution_node->get_puzzle().print_board();
+	std::cout << "Number of moves: " << num_moves << std::endl;
+	std::cout << "Number of nodes generated: " << nodes_generated_ << std::endl;
+}
+
+size_t UninformedWalk::print_solution_recursive(MoveNode *solution_node, size_t num_moves)
+{
 	if (solution_node->get_parent() == NULL)
 	{
-		return;
+		return num_moves;
 	}
 
-	print_solution(solution_node->get_parent());
+	size_t new_num = print_solution_recursive(solution_node->get_parent(), num_moves + 1);
 	solution_node->get_move().print_move();
+	return new_num;
 }

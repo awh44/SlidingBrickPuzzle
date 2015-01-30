@@ -20,8 +20,11 @@ class UninformedWalk : public Walk
 		Collection<MoveNode*> *open_list_;
 
 	private:
-		MoveNode *root_;
 		void print_solution(MoveNode *solution_node);
+		size_t print_solution_recursive(MoveNode *solution_node, size_t num_moves);
+		
+		MoveNode *root_;
+		size_t nodes_generated_;
 };
 
 #endif

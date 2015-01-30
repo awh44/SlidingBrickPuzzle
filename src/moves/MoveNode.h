@@ -19,8 +19,11 @@ class MoveNode
 		unsigned int get_cost();
 		void add_child(MoveNode *child);
 		size_t number_children();
+
+		void remove_from_parent();
+
 	private:
-		size_t remove_from_parent();
+		void remove_child(MoveNode *child);
 		
 		SlidingBrickPuzzle puzzle_;
 		MoveNode *parent_;

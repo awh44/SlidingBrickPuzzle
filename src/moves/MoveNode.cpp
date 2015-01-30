@@ -5,7 +5,9 @@
 MoveNode::MoveNode(SlidingBrickPuzzle puzzle)
 	: move_(0, SlidingBrickPuzzle::Direction::UP, 0, 0)
 {
+	parent_ = NULL;
 	puzzle_ = puzzle;
+	cost_ = 0;
 }
 
 MoveNode::MoveNode(MoveNode *parent, Move move)
@@ -66,17 +68,19 @@ size_t MoveNode::number_children()
 	return children_.size();
 }
 
-size_t MoveNode::remove_from_parent()
+void MoveNode::remove_from_parent()
 {
-	if (parent_ == NULL)
+	if (parent_ != NULL)
 	{
-		return 0;
+		parent_->remove_child(this);
 	}
+}
 
-	parent_->children_.erase(std::remove(std::begin(parent_->children_), std::end(parent_->children_), this), std::end(parent_->children_));
-	if (parent_->children_.size() == 0)
+void MoveNode::remove_child(MoveNode *child)
+{
+	children_.erase(std::remove(std::begin(children_), std::end(children_), child), std::end(children_));
+	if (children_.size() == 0)
 	{
-		delete parent_;
+		delete this;
 	}
-	return parent_->children_.size();
 }
