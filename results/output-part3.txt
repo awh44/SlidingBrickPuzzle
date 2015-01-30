@@ -1,0 +1,17 @@
+Doing a (20) IterativeDeepeningWalk of input/SBP-level0.txt:
+(2,left)
+(4,down)
+(3,right)
+(2,up)
+(2,up)
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+
+real	0m0.070s
+user	0m0.002s
+sys	0m0.002s
+
+

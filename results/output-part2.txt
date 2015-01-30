@@ -1,0 +1,391 @@
+Doing a BreadthFirstWalk of input/SBP-level0.txt:
+(2,left)
+(4,down)
+(3,right)
+(2,up)
+(2,up)
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+Number of moves: 5
+Number of nodes generated: 60
+
+real	0m0.006s
+user	0m0.005s
+sys	0m0.000s
+
+Doing a BreadthFirstWalk of input/SBP-level1.txt:
+(6,left)
+(7,left)
+(5,down)
+(4,left)
+(2,down)
+(3,right)
+(4,up)
+(5,up)
+(4,right)
+(3,right)
+(5,up)
+(2,left)
+(7,up)
+(7,right)
+(2,down)
+(2,left)
+5,5
+1,1,1,1,1,
+1,3,4,5,1,
+1,0,0,6,1,
+2,2,0,7,1,
+1,1,1,1,1,
+Number of moves: 16
+Number of nodes generated: 1662
+
+real	0m0.161s
+user	0m0.156s
+sys	0m0.005s
+
+Doing a BreadthFirstWalk of input/SBP-level2.txt:
+(3,left)
+(4,left)
+(7,up)
+(7,right)
+(2,left)
+(6,up)
+(8,up)
+(8,right)
+(5,down)
+(7,left)
+(5,left)
+(5,down)
+(2,down)
+(4,left)
+(5,up)
+(2,right)
+(3,right)
+(6,up)
+(7,left)
+(8,left)
+(6,up)
+(7,up)
+(8,left)
+(2,down)
+(6,down)
+(5,right)
+(4,right)
+(6,right)
+(6,up)
+(8,up)
+(2,left)
+(2,left)
+(2,left)
+6,5
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,7,5,8,1,
+2,2,0,0,0,1,
+1,1,1,1,1,1,
+Number of moves: 33
+Number of nodes generated: 21395
+
+real	0m15.488s
+user	0m15.500s
+sys	0m0.001s
+
+Doing a BreadthFirstWalk of input/SBP-level3.txt:
+(6,down)
+(4,down)
+(3,right)
+(4,up)
+(5,left)
+(6,left)
+(10,up)
+(10,right)
+(9,right)
+(8,right)
+(5,down)
+(4,down)
+(4,left)
+(2,left)
+(7,up)
+(10,up)
+(10,right)
+(9,right)
+(5,up)
+(8,up)
+(8,right)
+(7,right)
+(5,down)
+(6,down)
+(3,down)
+(4,down)
+(2,left)
+(4,left)
+(4,up)
+(7,up)
+(10,up)
+(10,right)
+(7,right)
+(9,right)
+(6,down)
+(2,down)
+(3,left)
+(4,left)
+(3,left)
+(4,left)
+(5,up)
+(7,up)
+(10,up)
+(7,up)
+(10,right)
+(10,right)
+(9,right)
+(9,right)
+(2,down)
+(2,left)
+6,6
+1,1,1,1,1,1,
+1,3,4,5,5,1,
+1,0,0,6,7,1,
+2,2,0,6,8,1,
+2,2,0,9,10,1,
+1,1,1,1,1,1,
+Number of moves: 50
+Number of nodes generated: 122772
+
+real	5m39.996s
+user	5m39.997s
+sys	0m0.093s
+
+
+Doing a DepthFirstWalk of input/SBP-level0.txt:
+(2,left)
+(4,down)
+(3,right)
+(2,up)
+(4,left)
+(4,left)
+(3,down)
+(4,left)
+(2,right)
+(4,right)
+(3,right)
+(2,left)
+(2,up)
+5,4
+1,2,2,1,1,
+1,0,0,0,1,
+1,0,3,4,1,
+1,1,1,1,1,
+Number of moves: 13
+Number of nodes generated: 41
+
+real	0m0.007s
+user	0m0.006s
+sys	0m0.001s
+Doing a DepthFirstWalk of input/SBP-level1.txt:
+(6,left)
+(7,left)
+(6,up)
+(7,right)
+(5,down)
+(6,left)
+(7,left)
+(7,up)
+(6,down)
+(6,right)
+(4,down)
+(4,right)
+(3,down)
+(6,up)
+(7,left)
+(5,down)
+(2,left)
+(7,up)
+(7,right)
+(6,right)
+(5,up)
+(7,up)
+(7,right)
+(5,down)
+(6,left)
+(7,left)
+(7,up)
+(6,down)
+(5,down)
+(4,right)
+(7,up)
+(7,right)
+(4,down)
+(2,down)
+(3,left)
+(4,up)
+(7,up)
+(7,right)
+(6,right)
+(3,left)
+(6,left)
+(7,left)
+(5,down)
+(2,right)
+(5,up)
+(6,left)
+(7,left)
+(4,left)
+(7,right)
+(6,right)
+(5,down)
+(2,left)
+(7,up)
+(7,right)
+(6,right)
+(5,up)
+(7,up)
+(7,right)
+(2,down)
+(2,left)
+5,5
+1,1,1,1,1,
+1,3,4,5,1,
+1,0,0,6,1,
+2,2,0,7,1,
+1,1,1,1,1,
+Number of moves: 60
+Number of nodes generated: 243
+
+real	0m0.026s
+user	0m0.019s
+sys	0m0.004s
+
+Doing a DepthFirstWalk of input/SBP-level2.txt:
+(3,left)
+(4,left)
+(7,up)
+(8,left)
+(6,down)
+(4,up)
+(8,up)
+(8,right)
+(7,right)
+(5,left)
+(7,left)
+(8,left)
+(8,up)
+(8,right)
+(8,right)
+(5,down)
+(7,left)
+(8,left)
+(6,down)
+(5,right)
+(7,up)
+(8,left)
+(8,left)
+(6,down)
+(8,left)
+(5,right)
+(8,right)
+(7,right)
+(6,right)
+(6,up)
+(7,left)
+(8,left)
+(7,left)
+(8,left)
+(6,down)
+(5,right)
+(7,up)
+(8,left)
+(6,right)
+(8,right)
+(7,right)
+(6,left)
+(3,down)
+(6,right)
+(5,right)
+(7,up)
+(8,left)
+(7,down)
+(6,right)
+(5,right)
+(3,left)
+(5,left)
+(6,left)
+(8,up)
+(8,right)
+(5,down)
+(5,left)
+(6,left)
+(5,up)
+(7,up)
+(8,left)
+(7,right)
+(8,right)
+(6,right)
+(8,left)
+(7,down)
+(6,right)
+(7,up)
+(8,left)
+(8,left)
+(7,down)
+(8,left)
+(6,right)
+(8,right)
+(7,right)
+(5,right)
+(3,down)
+(4,down)
+(3,left)
+(6,up)
+(5,up)
+(7,left)
+(8,left)
+(5,down)
+(8,right)
+(7,right)
+(6,right)
+(3,down)
+(6,left)
+(3,down)
+(2,left)
+(2,left)
+(5,up)
+(8,up)
+(8,right)
+(5,right)
+(7,right)
+(7,up)
+(4,down)
+(4,down)
+(2,down)
+(3,left)
+(5,up)
+(8,up)
+(3,left)
+(6,down)
+(5,up)
+(8,left)
+(5,down)
+(8,right)
+(7,right)
+(6,right)
+(5,up)
+(8,up)
+(8,right)
+(7,right)
+(2,down)
+(2,left)
+6,5
+1,1,1,1,1,1,
+1,3,3,4,5,1,
+1,0,0,4,6,1,
+2,2,0,7,8,1,
+1,1,1,1,1,1,
+Number of moves: 118
+Number of nodes generated: 837
+
+real	0m0.145s
+user	0m0.135s
+sys	0m0.008s
