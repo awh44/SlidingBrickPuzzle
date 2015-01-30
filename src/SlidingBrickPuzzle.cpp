@@ -251,7 +251,14 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 
 size_t SlidingBrickPuzzle::hash()
 {
-	return 0;
+	size_t min = board_.size() < board_[0].size() ? board_.size() : board_[0].size();
+	size_t hashval = 0;
+	for (size_t i = 0; i < min; i++)
+	{
+		hashval += board_[i][i];
+	}
+
+	return hashval;
 }
 
 bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
