@@ -39,7 +39,11 @@ bool DepthLimitedWalk::walk(void)
 			next->get_puzzle().print_board();
 			return true;
 		}
-		insert_all(next);
+
+		if (!been_seen(next))
+		{
+			insert_all(next);
+		}
 	}
 
 	return false;
@@ -68,4 +72,20 @@ void DepthLimitedWalk::print_solution(MoveNode *solution_node)
 
 	print_solution(solution_node->get_parent());
 	solution_node->get_move().print_move();
+}
+
+bool DepthLimitedWalk::been_seen(MoveNode *node)
+{
+	//check only the current path
+	MoveNode *ancestor = node->get_parent();
+	while (ancestor != NULL)
+	{
+		if (node->get_puzzle() == ancestor->get_puzzle())
+		{
+			return true;
+		}
+		ancestor = ancestor->get_parent();
+	}
+	
+	return false;
 }

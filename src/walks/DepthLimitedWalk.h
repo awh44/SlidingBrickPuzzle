@@ -18,6 +18,7 @@ class DepthLimitedWalk : public Walk
 		void print_solution(MoveNode *solution_node);
 
 	private:
+		bool been_seen(MoveNode *node);
 		MoveNode *root_;
 		Stack<MoveNode *> *open_list_;
 		size_t max_;
