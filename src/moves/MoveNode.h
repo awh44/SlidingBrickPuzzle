@@ -1,3 +1,10 @@
+/*
+	Austin Herring
+	January 30, 2015
+	MoveNode.h - contians a class for a Node in a search tree; contains a state, the move applied
+	to get there, the cost, and the parents and children.
+*/
+
 #ifndef _H_MOVENODE_
 #define _H_MOVENODE_
 
@@ -37,6 +44,7 @@ class MoveNode
 		std::vector<MoveNode*> children_;
 };
 
+/*
 template <>
 struct MoveNodeHash<MoveNode*>
 {
@@ -45,5 +53,5 @@ struct MoveNodeHash<MoveNode*>
 		return node->get_puzzle().hash();
 	}
 };
-
+*/
 #endif

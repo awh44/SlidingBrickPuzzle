@@ -8,6 +8,7 @@ DepthLimitedWalk::DepthLimitedWalk(SlidingBrickPuzzle puzzle, size_t max_depth)
 	root_ = new MoveNode(puzzle);
 	open_list_ = new Stack<MoveNode *>();
 	max_ = max_depth;
+	nodes_generated_ = 0;
 }
 
 DepthLimitedWalk::~DepthLimitedWalk()
@@ -16,11 +17,9 @@ DepthLimitedWalk::~DepthLimitedWalk()
 	delete open_list_;
 }
 
-//this algorithm is extremely close to the one in UninformedWalk.h (with the Stack as the
-//open_list_; then, basically just override small portions of methods to ignore the closed_list_
-//and then change insert_all to only call the parent method if the cost condition is satisfied),
-//but I couldn't make the inheritance work right, so I just made a new class and manually copied the
-//code
+//this algorithm is extremely close to the one used for depth first search (simply with a depth
+//limit added as an extra condition to the if statement with !been_seen), but getting the
+//inheritance to work proved too difficult, so this is just a manual copy of the code.
 bool DepthLimitedWalk::walk(void)
 {
 	if (root_->get_puzzle().is_solved())
@@ -37,6 +36,8 @@ bool DepthLimitedWalk::walk(void)
 		{
 			print_solution(next);
 			next->get_puzzle().print_board();
+			std::cout << "Number of moves: " << next->get_cost() << std::endl;
+			std::cout << "Number of nodes generated: " << nodes_generated_ << std::endl;
 			return true;
 		}
 
@@ -59,6 +60,7 @@ void DepthLimitedWalk::insert_all(MoveNode *curr_node)
 			MoveNode *new_node = new MoveNode(curr_node, moves[i]);
 			curr_node->add_child(new_node);
 			open_list_->add(new_node);
+			nodes_generated_++;
 		}
 	}
 }

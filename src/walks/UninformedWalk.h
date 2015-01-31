@@ -1,3 +1,12 @@
+/*
+	Austin Herring
+	January 30th, 2015
+	UninformedWalk - abstract class for algorithms for solving SlidingBrickPuzzles in uninformed
+	ways. If found, prints the solution, the cost of the solution, and the number of nodes generated
+	upon the computation of the call to walk().
+
+*/
+
 #ifndef _UNINFORMED_WALK_H_
 #define _UNINFORMED_WALK_H_
 
@@ -5,7 +14,6 @@
 #include "Walk.h"
 #include "../moves/MoveNode.h"
 #include "../structures/Collection.h"
-#include "../structures//Dictionary.h"
 
 class UninformedWalk : public Walk
 {

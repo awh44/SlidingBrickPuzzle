@@ -1,3 +1,11 @@
+/*
+	Austin Herring
+	January 30th, 2015
+	DepthLimitedWalk - does a depth first search of a SlidingBrickPuzzle, with a maximum depth
+	limited provided in the constructor. If found, prints the solution, the cost of the solution,
+	and the number of nodes generated upon the completion of the call to walk().
+*/
+
 #ifndef _DEPTH_LIMITED_WALK_H_
 #define _DEPTH_LIMITED_WALK_H_
 
@@ -22,6 +30,7 @@ class DepthLimitedWalk : public Walk
 		MoveNode *root_;
 		Stack<MoveNode *> *open_list_;
 		size_t max_;
+		size_t nodes_generated_;
 };
 
 #endif
