@@ -3,7 +3,10 @@
 	January 30th, 2015
 	UninformedWalk - abstract class for algorithms for solving SlidingBrickPuzzles in uninformed
 	ways. If found, prints the solution, the cost of the solution, and the number of nodes generated
-	upon the computation of the call to walk().
+	upon the computation of the call to walk(). Note that nodes are expanded from the upper left of
+	the board and with a move order of UP, DOWN, LEFT, RIGHT and inserted into the open list in that
+	order. (So that, for example, BreadthFirstSearch looks at upper left pieces moving up first,
+	while DepthFirstSearch looks at lower right pieces moving right first.)
 
 */
 
