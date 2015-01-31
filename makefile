@@ -1,7 +1,7 @@
 PAGER=less
 COMP=g++
 DEBUG=gdb
-STANDARD=gnu++11
+STANDARD=gnu++0x
 COMPOPS=-g -Wall -std=$(STANDARD)
 OBJECTOPS=-c -obuild/
 
