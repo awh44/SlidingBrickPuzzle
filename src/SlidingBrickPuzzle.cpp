@@ -7,9 +7,16 @@
 #include "SlidingBrickPuzzle.h"
 #include "moves/Move.h"
 
+SlidingBrickPuzzle::SlidingBrickPuzzle()
+{
+	goal_row_ = -1;
+}
+
 SlidingBrickPuzzle::SlidingBrickPuzzle(const SlidingBrickPuzzle &orig)
 {
 	board_ = orig.board_;
+	goal_row_ = orig.goal_row_;
+	goal_col_ = orig.goal_col_;
 }
 
 bool SlidingBrickPuzzle::load_game(std::string filename)
@@ -61,6 +68,11 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 			try
 			{
 				board_[row][column] = std::stoi(split_line[column]);
+				if (board_[row][column] == GOAL && goal_row_ == -1)
+				{
+					goal_row_ = row;
+					goal_col_ = column;
+				}
 			}
 			catch (const std::invalid_argument &e)
 			{
@@ -211,18 +223,7 @@ void SlidingBrickPuzzle::normalize(void)
 
 bool SlidingBrickPuzzle::is_solved(void)
 {
-	for (size_t i = 0; i < board_.size(); i++)
-	{
-		for (size_t j = 0; j < board_[i].size(); j++)
-		{
-			if (board_[i][j] == GOAL)
-			{
-				return false;
-			}
-		}
-	}
-
-	return true;
+	return board_[goal_row_][goal_col_] == MASTER;
 }
 
 bool SlidingBrickPuzzle::equal(const SlidingBrickPuzzle &other) const
@@ -260,6 +261,7 @@ size_t SlidingBrickPuzzle::hash()
 
 	return hashval;
 }
+
 
 bool SlidingBrickPuzzle::is_valid_place(int piece, int board_val)
 {

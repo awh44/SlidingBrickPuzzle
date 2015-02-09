@@ -21,7 +21,7 @@ class SlidingBrickPuzzle
 	public:
 		enum class Direction { UP, DOWN, LEFT, RIGHT };
 		
-		SlidingBrickPuzzle() {}
+		SlidingBrickPuzzle();
 		SlidingBrickPuzzle(const SlidingBrickPuzzle &orig);
 
 		/**
@@ -176,6 +176,8 @@ class SlidingBrickPuzzle
 		static const int MASTER = 2;
 
 		std::vector<std::vector<int>> board_;
+		int goal_row_;
+		int goal_col_;	
 };
 
 

@@ -41,5 +41,14 @@ class MoveNode
 		unsigned int cost_;
 		std::vector<MoveNode*> children_;
 };
-
+/*
+class CompareMoveNode
+{
+	public:
+		bool operator()(MoveNode *a, MoveNode *b)
+		{
+			return 
+		}
+}
+*/
 #endif
