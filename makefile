@@ -19,8 +19,8 @@ results/results.test: correct.out
 walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/DepthLimitedWalk.o build/IterativeDeepeningWalk.o
 	@$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o build/DepthLimitedWalk.o
 
-correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
-	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o
+correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o src/structures/Dictionary.h build/MoveNode.o
+	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o build/MoveNode.o
 
 build/SlidingBrickPuzzle.o: src/SlidingBrickPuzzle.h src/SlidingBrickPuzzle.cpp
 	gcc $(OBJECTOPS)SlidingBrickPuzzle.o $(COMPOPS) src/SlidingBrickPuzzle.cpp
@@ -45,6 +45,9 @@ build/IterativeDeepeningWalk.o: src/walks/IterativeDeepeningWalk.h src/walks/Ite
 
 build/DepthLimitedWalk.o: src/walks/DepthLimitedWalk.h src/walks/DepthLimitedWalk.cpp src/structures/Collection.h src/structures/Stack.h
 	gcc $(OBJECTOPS)DepthLimitedWalk.o $(COMPOPS) src/walks/DepthLimitedWalk.cpp
+
+build/AStarWalk.o: src/Walks/AStarWalk.h src/walks/AStarWalk.cpp src/structures/Dictionary.h src/structures/Queue.h
+	gcc $(OBJECTOPS)AStarWalk.o $(COMPOPS) src/walks/AStarWalk.cpp
 
 build/MoveNode.o: src/moves/MoveNode.h src/moves/MoveNode.cpp
 	gcc $(OBJECTOPS)MoveNode.o $(COMPOPS) src/moves/MoveNode.cpp

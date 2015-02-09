@@ -7,6 +7,11 @@ bool MoveNode::compare_nodes(MoveNode *a, MoveNode *b)
 	return a->get_puzzle() == b->get_puzzle();
 }
 
+size_t MoveNode::hash(MoveNode *node)
+{
+	return node->get_puzzle().hash();
+}
+
 MoveNode::MoveNode(SlidingBrickPuzzle puzzle)
 	: move_(0, SlidingBrickPuzzle::Direction::UP, 0, 0)
 {

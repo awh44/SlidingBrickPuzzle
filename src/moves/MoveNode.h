@@ -14,13 +14,11 @@
 #include "../SlidingBrickPuzzle.h"
 #include "Move.h"
 
-template <class T>
-class MoveNodeHash;
-
 class MoveNode
 {
 	public:
 		static bool compare_nodes(MoveNode *a, MoveNode *b);
+		static size_t hash(MoveNode *node);
 
 		MoveNode(SlidingBrickPuzzle puzzle);
 		MoveNode(MoveNode *parent = NULL, Move move = Move(0, SlidingBrickPuzzle::Direction::UP, 0, 0));
@@ -44,14 +42,4 @@ class MoveNode
 		std::vector<MoveNode*> children_;
 };
 
-/*
-template <>
-struct MoveNodeHash<MoveNode*>
-{
-	size_t operator()(MoveNode* const& node) const 
-	{
-		return node->get_puzzle().hash();
-	}
-};
-*/
 #endif
