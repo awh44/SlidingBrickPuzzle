@@ -1,4 +1,5 @@
 Loading SBP-level0.txt:
+master row, column = 2, 2
 5,4
 1,-1,-1,1,1,
 1,0,3,4,1,
@@ -6,6 +7,7 @@ Loading SBP-level0.txt:
 1,1,1,1,1,
 is_solved == 0
 Hash = 4
+Heuristic = 3
 Moves for the master piece: Left,
 Moves for piece 3: Left,
 Moves for piece 4: 
@@ -19,59 +21,84 @@ Moving 3 left:
 1,0,2,2,1,
 1,1,1,1,1,
 Hash = 7
+Heuristic = 3
+
 Moving 2 left:
 5,4
 1,-1,-1,1,1,
-1,3,0,4,1,
+1,0,3,4,1,
 1,2,2,0,1,
 1,1,1,1,1,
-Hash = 7
+Hash = 4
+Heuristic = 2
+
 Moving 4 down:
 5,4
 1,-1,-1,1,1,
-1,3,0,0,1,
-1,2,2,4,1,
+1,0,3,0,1,
+1,0,2,4,1,
 1,1,1,1,1,
-Hash = 7
+Hash = 4
+Heuristic = 3
+
 Moving 3 right twice:
 5,4
 1,-1,-1,1,1,
-1,0,0,3,1,
-1,2,2,4,1,
+1,0,3,3,1,
+1,0,2,2,1,
 1,1,1,1,1,
 Hash = 4
+Heuristic = 3
+
+5,4
+1,-1,-1,1,1,
+1,0,0,3,1,
+1,0,2,2,1,
+1,1,1,1,1,
+Hash = 4
+Heuristic = 3
+
 Moving 2 up:
 5,4
 1,-1,-1,1,1,
-1,2,2,3,1,
-1,0,0,4,1,
+1,2,2,2,1,
+1,0,0,0,1,
 1,1,1,1,1,
-Valid moves for 2: Up,Down,
+Hash = 4
+Heuristic = 2
+
+Valid moves for 2: Left,
 Moving 2 up again:
 5,4
-1,2,2,1,1,
-1,0,0,3,1,
-1,0,0,4,1,
+1,2,-1,1,1,
+1,0,3,4,1,
+1,0,2,2,1,
 1,1,1,1,1,
-Hash value: 2
+Hash = 4
+Heuristic = 2
+
+
+
 Copying board and applying move of 2 down:
 5,4
-1,0,0,1,1,
-1,2,2,3,1,
-1,0,0,4,1,
+1,0,-1,1,1,
+1,2,3,4,1,
+1,0,2,2,1,
 1,1,1,1,1,
 
 Loading SBP-level0-solved.txt:
+master row, column = 0, 1
 5,4
 1,2,2,1,1,
 1,0,0,3,1,
 1,0,0,4,1,
 1,1,1,1,1,
-is_solved == 1
-Comparing two solved puzzles: 1
+is_solved == 0
+Comparing two solved puzzles: 0
 Comparing solved and unsolved: 0
 
 Loading the non-normalized board:
+master row, column = 2, 2
 6,8
 1,1,1,1,1,1,
 1,12,2,2,4,1,
@@ -91,4 +118,117 @@ Normalizing:
 1,0,0,0,0,1,
 1,0,0,0,0,1,
 1,1,-1,-1,1,1,
+Heuristic = 5
+
+
+
+
+TESTING THE HEURISTIC FOR ALL LEVELS----------------
+master row, column = 1, 2
+5,5
+1,1,1,1,1,
+1,3,2,2,1,
+1,0,4,5,1,
+-1,0,6,7,1,
+1,1,1,1,1,
+Heuristic = 4
+
+master row, column = 1, 3
+6,5
+1,1,1,1,1,1,
+1,0,3,2,2,1,
+1,0,3,4,5,1,
+-1,6,6,7,8,1,
+1,1,1,1,1,1,
+Heuristic = 5
+
+master row, column = 2, 3
+6,6
+1,1,1,1,1,1,
+1,3,4,2,2,1,
+1,5,4,2,2,1,
+-1,0,6,7,7,1,
+-1,8,0,9,10,1,
+1,1,1,1,1,1,
+Heuristic = 4
+
+
+
+Starting bricks levels...
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,5,2,2,6,1,
+1,7,8,9,10,1,
+1,11,12,13,14,1,
+1,15,0,0,16,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,7,8,1,
+1,9,10,11,12,1,
+1,13,0,0,14,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,7,8,1,
+1,5,9,10,11,1,
+1,12,0,0,13,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,6,7,1,
+1,8,9,10,11,1,
+1,12,0,0,13,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,7,8,1,
+1,5,9,10,8,1,
+1,11,0,0,12,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,6,7,1,
+1,5,8,9,10,1,
+1,11,0,0,12,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
+
+master row, column = 2, 2
+6,7
+1,1,1,1,1,1,
+1,3,2,2,4,1,
+1,3,2,2,4,1,
+1,5,6,6,7,1,
+1,5,8,9,7,1,
+1,10,0,0,11,1,
+1,1,-1,-1,1,1,
+Heuristic = 4
 

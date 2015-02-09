@@ -47,6 +47,14 @@ void apply_move_cycle(SlidingBrickPuzzle puzzle, Move move)
 	std::cout << "Heuristic = " << puzzle.heuristic() << std::endl << std::endl;
 }
 
+void print_heuristic_for_file(std::string file)
+{
+	SlidingBrickPuzzle level;
+	level.load_game(file);
+	level.print_board();
+	std::cout << "Heuristic = " << level.heuristic() << std::endl << std::endl;
+}
+
 int main(int argc, char *argv[])
 {
 	if (argc < 2)
@@ -118,7 +126,20 @@ int main(int argc, char *argv[])
 		abnormal.print_board();
 		std::cout << "Heuristic = " << abnormal.heuristic() << std::endl;
 
-		std::cout << std::endl;
+		std::cout << std::endl << std::endl << std::endl << std::endl;
+		std::cout << "TESTING THE HEURISTIC FOR ALL LEVELS----------------" << std::endl;
+		print_heuristic_for_file("input/SBP-level1.txt");
+		print_heuristic_for_file("input/SBP-level2.txt");
+		print_heuristic_for_file("input/SBP-level3.txt");
+		std::cout << std::endl << std::endl << "Starting bricks levels..." << std::endl;
+		print_heuristic_for_file("input/SBP-bricks-level1.txt");
+		print_heuristic_for_file("input/SBP-bricks-level2.txt");
+		print_heuristic_for_file("input/SBP-bricks-level3.txt");
+		print_heuristic_for_file("input/SBP-bricks-level4.txt");
+		print_heuristic_for_file("input/SBP-bricks-level5.txt");
+		print_heuristic_for_file("input/SBP-bricks-level6.txt");
+		print_heuristic_for_file("input/SBP-bricks-level7.txt");
+
 	}
 	else if (argc < 3)
 	{

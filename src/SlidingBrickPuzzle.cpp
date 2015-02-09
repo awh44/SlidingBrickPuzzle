@@ -447,6 +447,17 @@ void SlidingBrickPuzzle::swap_indices(int index1, int index2)
 
 void SlidingBrickPuzzle::normalize_master_position()
 {
+	while ((goal_row_ > master_row_) && (board_[master_row_ + 1][master_col_] == MASTER))
+	{
+		master_row_++;
+	}
+
+	while ((goal_col_ > master_col_) && (board_[master_row_][master_col_ + 1] == MASTER))
+	{
+		master_col_++;
+	}
+
+	std::cout << "master row, column = " << master_row_ << ", " << master_col_ << std::endl;
 }
 
 bool operator==(const SlidingBrickPuzzle &puzzle1, const SlidingBrickPuzzle &puzzle2)
