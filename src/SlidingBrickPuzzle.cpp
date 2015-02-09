@@ -96,6 +96,8 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 		}
 	}
 
+	normalize_master_position();
+
 	return true;
 }
 
@@ -298,7 +300,7 @@ size_t SlidingBrickPuzzle::hash()
 
 size_t SlidingBrickPuzzle::heuristic()
 {
-
+	return abs(goal_row_ - master_row_) + abs(goal_col_ - master_col_);
 }
 
 
@@ -441,6 +443,10 @@ void SlidingBrickPuzzle::swap_indices(int index1, int index2)
 			}
 		}
 	}	
+}
+
+void SlidingBrickPuzzle::normalize_master_position()
+{
 }
 
 bool operator==(const SlidingBrickPuzzle &puzzle1, const SlidingBrickPuzzle &puzzle2)

@@ -171,6 +171,8 @@ class SlidingBrickPuzzle
 		*/
 		void swap_indices(int index1, int index2);
 
+		void normalize_master_position();
+
 		static const int GOAL = -1;
 		static const int EMPTY = 0;
 		static const int WALL = 1;

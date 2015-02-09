@@ -39,6 +39,14 @@ void print_move_array(std::vector<Move> moves)
 	}	
 }
 
+void apply_move_cycle(SlidingBrickPuzzle puzzle, Move move)
+{
+	puzzle.apply_move(move);
+	puzzle.print_board();
+	std::cout << "Hash = " << puzzle.hash() << std::endl;
+	std::cout << "Heuristic = " << puzzle.heuristic() << std::endl << std::endl;
+}
+
 int main(int argc, char *argv[])
 {
 	if (argc < 2)
@@ -50,6 +58,7 @@ int main(int argc, char *argv[])
 		puzzle.print_board();
 		std::cout << "is_solved == " << puzzle.is_solved() << std::endl;
 		std::cout << "Hash = " << puzzle.hash() << std::endl;
+		std::cout << "Heuristic = " << puzzle.heuristic() << std::endl;
 
 		std::cout << "Moves for the master piece: ";
 		print_moves(puzzle.moves_for_piece(2));
@@ -62,39 +71,27 @@ int main(int argc, char *argv[])
 		print_move_array(moves);
 		
 		std::cout << "Moving 3 left:" << std::endl;
-		puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
-		puzzle.print_board();
-		std::cout << "Hash = " << puzzle.hash() << std::endl;
+		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
 
 		std::cout << "Moving 2 left:" << std::endl;
-		puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::LEFT, 2, 2));
-		puzzle.print_board();
-		std::cout << "Hash = " << puzzle.hash() << std::endl;
+		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::LEFT, 2, 2));
 
 		std::cout << "Moving 4 down:" << std::endl;
-		puzzle.apply_move(Move(4, SlidingBrickPuzzle::Direction::DOWN, 1, 3));
-		puzzle.print_board();
-		std::cout << "Hash = " << puzzle.hash() << std::endl;
+		apply_move_cycle(puzzle, Move(4, SlidingBrickPuzzle::Direction::DOWN, 1, 3));
 
 		std::cout << "Moving 3 right twice:" << std::endl;
-		puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 1));
-		puzzle.apply_move(Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 2));
-		puzzle.print_board();
-		std::cout << "Hash = " << puzzle.hash() << std::endl;
+		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 1));
+		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 2));
 
 		std::cout << "Moving 2 up:" << std::endl;
-		puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 2, 1));
-		puzzle.print_board();
+		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::UP, 2, 1));
 		std::cout << "Valid moves for 2: ";
 		print_moves(puzzle.moves_for_piece(2));
 
 		std::cout << "Moving 2 up again:" << std::endl;
-		puzzle.apply_move(Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
-		puzzle.print_board();
+		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
 
-		std::cout << "Hash value: " << puzzle.hash();
-
-		std::cout << std::endl;
+		std::cout << std::endl << std::endl;
 
 		std::cout << "Copying board and applying move of 2 down:" << std::endl;
 		SlidingBrickPuzzle new_p = puzzle.apply_move_clone(Move(2, SlidingBrickPuzzle::Direction::DOWN, 0, 1));
@@ -119,6 +116,7 @@ int main(int argc, char *argv[])
 		std::cout << "Normalizing:" << std::endl;
 		abnormal.normalize();
 		abnormal.print_board();
+		std::cout << "Heuristic = " << abnormal.heuristic() << std::endl;
 
 		std::cout << std::endl;
 	}
@@ -144,6 +142,7 @@ int main(int argc, char *argv[])
 		std::cout << "Member now? " << dict.member(third) << std::endl;
 		delete node;
 		delete newnode;
+		delete third;
 	}
 
 	return 0;
