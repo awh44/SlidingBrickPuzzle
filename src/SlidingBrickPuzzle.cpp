@@ -10,6 +10,7 @@
 SlidingBrickPuzzle::SlidingBrickPuzzle()
 {
 	goal_row_ = -1;
+	master_row_ = -1;
 }
 
 SlidingBrickPuzzle::SlidingBrickPuzzle(const SlidingBrickPuzzle &orig)
@@ -17,6 +18,8 @@ SlidingBrickPuzzle::SlidingBrickPuzzle(const SlidingBrickPuzzle &orig)
 	board_ = orig.board_;
 	goal_row_ = orig.goal_row_;
 	goal_col_ = orig.goal_col_;
+	master_row_ = orig.master_row_;
+	master_col_ = orig.master_col_;
 }
 
 bool SlidingBrickPuzzle::load_game(std::string filename)
@@ -68,10 +71,21 @@ bool SlidingBrickPuzzle::load_game(std::string filename)
 			try
 			{
 				board_[row][column] = std::stoi(split_line[column]);
-				if (board_[row][column] == GOAL && goal_row_ == -1)
+				if (board_[row][column] == GOAL)
 				{
-					goal_row_ = row;
-					goal_col_ = column;
+					if (goal_row_ == -1)
+					{
+						goal_row_ = row;
+						goal_col_ = column;
+					}
+				}
+				else if (board_[row][column] == MASTER)
+				{
+					if (master_row_ == -1)
+					{
+						master_row_ = row;
+						master_col_ = column;
+					}
 				}
 			}
 			catch (const std::invalid_argument &e)
@@ -145,6 +159,11 @@ void SlidingBrickPuzzle::apply_move(Move move)
 			board_[last_row][column] = EMPTY;
 			column++;
 		} while (board_[row][column] == piece);
+
+		if (piece == MASTER)
+		{
+			master_row_--;
+		}
 	}
 	else if (direction == Direction::DOWN)
 	{
@@ -160,6 +179,11 @@ void SlidingBrickPuzzle::apply_move(Move move)
 			board_[row][column] = EMPTY;
 			column++;
 		} while (board_[row][column] == piece);
+
+		if (piece == MASTER)
+		{
+			master_row_++;
+		}
 	}
 	else if (direction == Direction::LEFT)
 	{
@@ -175,6 +199,11 @@ void SlidingBrickPuzzle::apply_move(Move move)
 			board_[row][last_column] = EMPTY;
 			row++;
 		} while (board_[row][column] == piece);
+
+		if (piece == MASTER)
+		{
+			master_col_--;
+		}
 	}
 	else if (direction == Direction::RIGHT)
 	{
@@ -190,6 +219,11 @@ void SlidingBrickPuzzle::apply_move(Move move)
 			board_[row][last_column + 1] = piece;
 			row++;
 		} while (board_[row][column] == piece);
+
+		if (piece == MASTER)
+		{
+			master_col_++;
+		}
 	}
 }
 
@@ -260,6 +294,11 @@ size_t SlidingBrickPuzzle::hash()
 	}
 
 	return hashval;
+}
+
+size_t SlidingBrickPuzzle::heuristic()
+{
+
 }
 
 

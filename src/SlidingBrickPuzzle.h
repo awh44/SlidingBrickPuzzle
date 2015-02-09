@@ -87,6 +87,7 @@ class SlidingBrickPuzzle
 		void print_board(std::ostream &out = std::cout);
 
 		size_t hash();
+		size_t heuristic();
 	private:
 		/**
 			returns whether the given piece can move into a position with the value board_val
@@ -177,7 +178,9 @@ class SlidingBrickPuzzle
 
 		std::vector<std::vector<int>> board_;
 		int goal_row_;
-		int goal_col_;	
+		int goal_col_;
+		int master_row_;
+		int master_col_;
 };
 
 
