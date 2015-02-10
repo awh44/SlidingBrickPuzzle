@@ -290,15 +290,6 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 size_t SlidingBrickPuzzle::hash()
 {
 	return std::hash<std::string>()(to_string());
-	/*
-	size_t min = board_.size() < board_[0].size() ? board_.size() : board_[0].size();
-	size_t hashval = 0;
-	for (size_t i = 0; i < min; i++)
-	{
-		hashval += board_[i][i];
-	}
-
-	return hashval;*/
 }
 
 size_t SlidingBrickPuzzle::heuristic()

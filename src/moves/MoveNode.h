@@ -24,7 +24,7 @@ class MoveNode
 		MoveNode(MoveNode *parent = NULL, Move move = Move(0, SlidingBrickPuzzle::Direction::UP, 0, 0));
 		~MoveNode();
 
-		SlidingBrickPuzzle get_puzzle();
+		SlidingBrickPuzzle &get_puzzle();
 		MoveNode *get_parent();
 		Move get_move();
 		unsigned int get_cost();

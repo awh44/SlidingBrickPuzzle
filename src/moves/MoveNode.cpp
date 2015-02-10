@@ -48,7 +48,7 @@ MoveNode::~MoveNode()
 	}
 }
 
-SlidingBrickPuzzle MoveNode::get_puzzle()
+SlidingBrickPuzzle &MoveNode::get_puzzle()
 {
 	return puzzle_;
 }
