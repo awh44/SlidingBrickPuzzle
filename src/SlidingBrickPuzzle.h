@@ -172,6 +172,7 @@ class SlidingBrickPuzzle
 		void swap_indices(int index1, int index2);
 
 		void normalize_master_position();
+		std::string to_string();
 
 		static const int GOAL = -1;
 		static const int EMPTY = 0;

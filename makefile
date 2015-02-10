@@ -1,7 +1,7 @@
 PAGER=less
 COMP=g++
 DEBUG=gdb
-STANDARD=gnu++0x
+STANDARD=gnu++11
 COMPOPS=-g -Wall -std=$(STANDARD)
 OBJECTOPS=-c -obuild/
 
@@ -16,8 +16,8 @@ correct: results/results.test
 results/results.test: correct.out
 	@./correct.out > results/results.test
 
-walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/DepthLimitedWalk.o build/IterativeDeepeningWalk.o
-	@$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o build/DepthLimitedWalk.o
+walk.out: drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/MoveNode.o build/DepthFirstWalk.o build/DepthLimitedWalk.o build/IterativeDeepeningWalk.o build/AStarWalk.o
+	@$(COMP) -owalk.out $(COMPOPS) drivers/walk.cpp build/SlidingBrickPuzzle.o build/Move.o build/RandomWalk.o build/UninformedWalk.o build/BreadthFirstWalk.o build/DepthFirstWalk.o build/IterativeDeepeningWalk.o build/MoveNode.o build/DepthLimitedWalk.o build/AStarWalk.o
 
 correct.out: drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o src/structures/Dictionary.h build/MoveNode.o
 	@$(COMP) -ocorrect.out $(COMPOPS) drivers/correct.cpp build/SlidingBrickPuzzle.o build/Move.o build/MoveNode.o
@@ -46,7 +46,7 @@ build/IterativeDeepeningWalk.o: src/walks/IterativeDeepeningWalk.h src/walks/Ite
 build/DepthLimitedWalk.o: src/walks/DepthLimitedWalk.h src/walks/DepthLimitedWalk.cpp src/structures/Collection.h src/structures/Stack.h
 	gcc $(OBJECTOPS)DepthLimitedWalk.o $(COMPOPS) src/walks/DepthLimitedWalk.cpp
 
-build/AStarWalk.o: src/Walks/AStarWalk.h src/walks/AStarWalk.cpp src/structures/Dictionary.h src/structures/Queue.h
+build/AStarWalk.o: src/walks/AStarWalk.h src/walks/AStarWalk.cpp src/structures/Dictionary.h src/structures/PriorityQueue.h
 	gcc $(OBJECTOPS)AStarWalk.o $(COMPOPS) src/walks/AStarWalk.cpp
 
 build/MoveNode.o: src/moves/MoveNode.h src/moves/MoveNode.cpp

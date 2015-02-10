@@ -7,6 +7,7 @@
 #include "../src/moves/Move.h"
 #include "../src/moves/MoveNode.h"
 #include "../src/structures/Dictionary.h"
+#include "../src/structures/PriorityQueue.h"
 
 void print_direction_string(SlidingBrickPuzzle::Direction direction)
 {
@@ -39,12 +40,11 @@ void print_move_array(std::vector<Move> moves)
 	}	
 }
 
-void apply_move_cycle(SlidingBrickPuzzle puzzle, Move move)
+void apply_move_cycle(SlidingBrickPuzzle &puzzle, Move move)
 {
 	puzzle.apply_move(move);
 	puzzle.print_board();
 	std::cout << "Hash = " << puzzle.hash() << std::endl;
-	std::cout << "Heuristic = " << puzzle.heuristic() << std::endl << std::endl;
 }
 
 void print_heuristic_for_file(std::string file)
@@ -60,13 +60,14 @@ int main(int argc, char *argv[])
 	if (argc < 2)
 	{
 		SlidingBrickPuzzle puzzle;
+		std::vector<MoveNode *> nodes;
+		PriorityQueue<MoveNode *, CompareMoveNode> queue;
 
 		std::cout << "Loading SBP-level0.txt:" << std::endl;
 		puzzle.load_game("input/SBP-level0.txt");
 		puzzle.print_board();
 		std::cout << "is_solved == " << puzzle.is_solved() << std::endl;
 		std::cout << "Hash = " << puzzle.hash() << std::endl;
-		std::cout << "Heuristic = " << puzzle.heuristic() << std::endl;
 
 		std::cout << "Moves for the master piece: ";
 		print_moves(puzzle.moves_for_piece(2));
@@ -77,27 +78,42 @@ int main(int argc, char *argv[])
 		std::cout << "All moves are:" << std::endl;
 		std::vector<Move> moves = puzzle.all_moves();
 		print_move_array(moves);
+
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 		
 		std::cout << "Moving 3 left:" << std::endl;
 		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << "Moving 2 left:" << std::endl;
 		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::LEFT, 2, 2));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << "Moving 4 down:" << std::endl;
 		apply_move_cycle(puzzle, Move(4, SlidingBrickPuzzle::Direction::DOWN, 1, 3));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << "Moving 3 right twice:" << std::endl;
 		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 1));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::RIGHT, 1, 2));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << "Moving 2 up:" << std::endl;
 		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::UP, 2, 1));
-		std::cout << "Valid moves for 2: ";
-		print_moves(puzzle.moves_for_piece(2));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << "Moving 2 up again:" << std::endl;
 		apply_move_cycle(puzzle, Move(2, SlidingBrickPuzzle::Direction::UP, 1, 1));
+		nodes.push_back(new MoveNode(puzzle));
+		queue.add(nodes[nodes.size() - 1]);
 
 		std::cout << std::endl << std::endl;
 
@@ -115,19 +131,21 @@ int main(int argc, char *argv[])
 		std::cout << "Comparing two solved puzzles: " << puzzle2.equal(puzzle) << std::endl;
 		std::cout << "Comparing solved and unsolved: " << puzzle2.equal(new_p) << std::endl;
 
-		std::cout << std::endl;
-
-		std::cout << "Loading the non-normalized board:" << std::endl;
-		SlidingBrickPuzzle abnormal;
-		abnormal.load_game("input/SBP-test-not-normalized.txt");
-		abnormal.print_board();
-		std::cout << "Normalizing:" << std::endl;
-		abnormal.normalize();
-		abnormal.print_board();
-		std::cout << "Heuristic = " << abnormal.heuristic() << std::endl;
-
+		std::cout << std::endl << std::endl << std::endl << std::endl;
+		while (!queue.empty())
+		{
+			MoveNode *curr_node = queue.get();
+			queue.remove();
+			std::cout << "Heuristic = " << curr_node->get_puzzle().heuristic() << ", board = " << std::endl;
+			curr_node->get_puzzle().print_board();
+			delete curr_node;
+		}
+	}
+	else if (argc < 3)
+	{
 		std::cout << std::endl << std::endl << std::endl << std::endl;
 		std::cout << "TESTING THE HEURISTIC FOR ALL LEVELS----------------" << std::endl;
+		print_heuristic_for_file("input/SBP-level0.txt");
 		print_heuristic_for_file("input/SBP-level1.txt");
 		print_heuristic_for_file("input/SBP-level2.txt");
 		print_heuristic_for_file("input/SBP-level3.txt");
@@ -141,7 +159,7 @@ int main(int argc, char *argv[])
 		print_heuristic_for_file("input/SBP-bricks-level7.txt");
 
 	}
-	else if (argc < 3)
+	else if (argc < 4)
 	{
 		Dictionary<MoveNode*> dict(MoveNode::hash, MoveNode::compare_nodes);
 		SlidingBrickPuzzle puzzle;

@@ -5,8 +5,6 @@ template <class T>
 class Collection
 {
 	public:
-		typedef bool (*comparator)(T a, T b);
-
 		virtual ~Collection() {};
 		virtual T get() = 0;
 		virtual void add(T x) = 0;

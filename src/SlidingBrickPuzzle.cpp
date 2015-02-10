@@ -289,6 +289,8 @@ void SlidingBrickPuzzle::print_board(std::ostream &out)
 
 size_t SlidingBrickPuzzle::hash()
 {
+	return std::hash<std::string>()(to_string());
+	/*
 	size_t min = board_.size() < board_[0].size() ? board_.size() : board_[0].size();
 	size_t hashval = 0;
 	for (size_t i = 0; i < min; i++)
@@ -296,7 +298,7 @@ size_t SlidingBrickPuzzle::hash()
 		hashval += board_[i][i];
 	}
 
-	return hashval;
+	return hashval;*/
 }
 
 size_t SlidingBrickPuzzle::heuristic()
@@ -463,6 +465,20 @@ void SlidingBrickPuzzle::normalize_master_position()
 			master_col_++;
 		}
 	}
+}
+
+std::string SlidingBrickPuzzle::to_string()
+{
+	std::string s;
+	for (size_t row = 0; row < board_.size(); row++)
+	{
+		for (size_t column = 0; column < board_[0].size(); column++)
+		{
+			s += std::to_string(board_[row][column]);
+		}
+	}
+
+	return s;
 }
 
 bool operator==(const SlidingBrickPuzzle &puzzle1, const SlidingBrickPuzzle &puzzle2)

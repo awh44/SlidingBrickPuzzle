@@ -10,6 +10,7 @@
 #include "../src/walks/DepthFirstWalk.h"
 #include "../src/walks/DepthLimitedWalk.h"
 #include "../src/walks/IterativeDeepeningWalk.h"
+#include "../src/walks/AStarWalk.h"
 
 int main(int argc, char *argv[])
 {
@@ -77,6 +78,11 @@ int main(int argc, char *argv[])
 
 			std::cout << "(" << max_moves << ") Random";
 			walk = new RandomWalk(puzzle, max_moves);
+			break;
+		case 'A':
+		case 'a':
+			std::cout << "AStar";
+			walk = new AStarWalk(puzzle);
 			break;
 		default:
 			std::cout << "Unknown Walk type. Please use Breadth, Depth, Iterative, or Random" << std::endl;

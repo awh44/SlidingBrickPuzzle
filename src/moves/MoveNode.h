@@ -41,14 +41,31 @@ class MoveNode
 		unsigned int cost_;
 		std::vector<MoveNode*> children_;
 };
-/*
+
 class CompareMoveNode
 {
 	public:
 		bool operator()(MoveNode *a, MoveNode *b)
 		{
-			return 
+			return a->get_puzzle().heuristic() + a->get_cost() > b->get_puzzle().heuristic() + b->get_cost();
 		}
-}
-*/
+};
+
+class HashMoveNode
+{
+	public:
+		bool operator()(MoveNode *a) const noexcept
+		{
+			return a->get_puzzle().hash();
+		}
+};
+
+class EqualMoveNode
+{
+	public:
+		bool operator()(MoveNode *a, MoveNode *b) const
+		{
+			return MoveNode::compare_nodes(a, b);
+		}
+};
 #endif
