@@ -23,14 +23,17 @@ bool AStarWalk::walk(void)
 	{
 		MoveNode *next = open_list_->get();
 		open_list_->remove();
-		if (next->get_puzzle().is_solved())
+		if (closed_list_.count(next) == 0)
 		{
-			print_solution(next);
-			return true;
-		}
+			if (next->get_puzzle().is_solved())
+			{
+				print_solution(next);
+				return true;
+			}
 
-		closed_list_.insert(next);
-		insert_all(next);	
+			closed_list_.insert(next);
+			insert_all(next);	
+		}
 	}
 
 	return false;
