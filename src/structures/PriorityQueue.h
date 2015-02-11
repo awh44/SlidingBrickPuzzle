@@ -1,3 +1,11 @@
+/*
+	Austin Herring
+	February 13, 2015
+	PriorityQueue.h - an adapter class for C++'s built-in priority_queue to meet the specifications
+	of the "Collection" abstract class. The adapter should hopefully eventually allow the same
+	search function to be used for AStar as was used for BreadthFirst and DepthFirst walks.
+*/
+
 #include <queue>
 #include <vector>
 #include "Collection.h"

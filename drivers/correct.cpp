@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 
 		nodes.push_back(new MoveNode(puzzle));
 		queue.add(nodes[nodes.size() - 1]);
-		
+
 		std::cout << "Moving 3 left:" << std::endl;
 		apply_move_cycle(puzzle, Move(3, SlidingBrickPuzzle::Direction::LEFT, 1, 2));
 		nodes.push_back(new MoveNode(puzzle));

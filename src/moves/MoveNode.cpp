@@ -24,19 +24,10 @@ MoveNode::MoveNode(MoveNode *parent, Move move)
 	: move_(0, SlidingBrickPuzzle::Direction::UP, 0, 0)
 {
 	parent_ = parent; 
-
-	if (parent_ != NULL)
-	{
-		puzzle_ = parent->puzzle_.apply_move_clone(move);
-		puzzle_.normalize();
-
-		move_ = move;
-		cost_ = parent_->cost_ + 1;
-	}
-	else
-	{
-		cost_ = 0;
-	}
+	puzzle_ = parent->puzzle_.apply_move_clone(move);
+	puzzle_.normalize();
+	move_ = move;
+	cost_ = parent_->cost_ + 1;
 }
 
 MoveNode::~MoveNode()
