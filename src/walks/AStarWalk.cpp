@@ -6,6 +6,8 @@ AStarWalk::AStarWalk(SlidingBrickPuzzle puzzle)
 {
 	root_ = new MoveNode(puzzle);
 	open_list_ = new PriorityQueue<MoveNode *, CompareMoveNode>();
+	nodes_generated_ = 0;
+	nodes_added_ = 0;
 }
 
 AStarWalk::~AStarWalk()
@@ -40,8 +42,10 @@ void AStarWalk::insert_all(MoveNode *curr_node)
 	for (size_t i = 0; i < moves.size(); i++)
 	{
 		MoveNode *new_node = new MoveNode(curr_node, moves[i]);
+		nodes_generated_++;
 		if (closed_list_.count(new_node) == 0)
 		{
+			nodes_added_++;
 			curr_node->add_child(new_node);
 			open_list_->add(new_node);
 		}
@@ -57,6 +61,8 @@ void AStarWalk::print_solution(MoveNode *solution_node)
 	print_recursive(solution_node);
 	solution_node->get_puzzle().print_board();
 	std::cout << "Number of moves: " << solution_node->get_cost() << std::endl;
+	std::cout << "Number of nodes generated: " << nodes_generated_ << std::endl;
+	std::cout << "Number of nodes actually added: " << nodes_added_<< std::endl;
 }
 
 void AStarWalk::print_recursive(MoveNode *solution_node)

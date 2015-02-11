@@ -21,4 +21,6 @@ class AStarWalk : public Walk
 		MoveNode *root_;
 		Collection<MoveNode *> *open_list_;
 		std::unordered_set<MoveNode*, HashMoveNode, EqualMoveNode> closed_list_;
+		size_t nodes_generated_;
+		size_t nodes_added_;
 };
