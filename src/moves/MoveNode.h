@@ -28,9 +28,9 @@ class MoveNode
 		MoveNode *get_parent();
 		Move get_move();
 		unsigned int get_cost();
+		size_t get_hash();
+		size_t get_heuristic();
 		void add_child(MoveNode *child);
-		size_t number_children();
-		void remove_from_parent();
 
 	private:
 		void remove_child(MoveNode *child);
@@ -40,6 +40,8 @@ class MoveNode
 		Move move_;
 		unsigned int cost_;
 		std::vector<MoveNode*> children_;
+		size_t hash_;
+		size_t heuristic_;
 };
 
 class CompareMoveNode
@@ -47,7 +49,7 @@ class CompareMoveNode
 	public:
 		bool operator()(MoveNode *a, MoveNode *b)
 		{
-			return a->get_puzzle().heuristic() + a->get_cost() > b->get_puzzle().heuristic() + b->get_cost();
+			return a->get_heuristic() + a->get_cost() > b->get_heuristic() + b->get_cost();
 		}
 };
 
@@ -56,7 +58,7 @@ class HashMoveNode
 	public:
 		bool operator()(MoveNode *a) const noexcept
 		{
-			return a->get_puzzle().hash();
+			return a->get_hash();
 		}
 };
 

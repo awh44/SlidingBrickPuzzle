@@ -18,6 +18,8 @@ MoveNode::MoveNode(SlidingBrickPuzzle puzzle)
 	parent_ = NULL;
 	puzzle_ = puzzle;
 	cost_ = 0;
+	hash_ = puzzle_.hash();
+	heuristic_ = puzzle_.heuristic();
 }
 
 MoveNode::MoveNode(MoveNode *parent, Move move)
@@ -28,11 +30,12 @@ MoveNode::MoveNode(MoveNode *parent, Move move)
 	puzzle_.normalize();
 	move_ = move;
 	cost_ = parent_->cost_ + 1;
+	hash_ = puzzle_.hash();
+	heuristic_ = puzzle_.heuristic();
 }
 
 MoveNode::~MoveNode()
 {
-	//remove_from_parent();
 	for (size_t i = 0; i < children_.size(); i++)
 	{
 		delete children_[i];
@@ -59,29 +62,17 @@ unsigned int MoveNode::get_cost()
 	return cost_;
 }
 
+size_t MoveNode::get_hash()
+{
+	return hash_;
+}
+
+size_t MoveNode::get_heuristic()
+{
+	return heuristic_;
+}
+
 void MoveNode::add_child(MoveNode *child)
 {
 	children_.push_back(child);
-}
-
-size_t MoveNode::number_children()
-{
-	return children_.size();
-}
-
-void MoveNode::remove_from_parent()
-{
-	if (parent_ != NULL)
-	{
-		parent_->remove_child(this);
-	}
-}
-
-void MoveNode::remove_child(MoveNode *child)
-{
-	children_.erase(std::remove(std::begin(children_), std::end(children_), child), std::end(children_));
-	if (children_.size() == 0)
-	{
-		delete this;
-	}
 }
