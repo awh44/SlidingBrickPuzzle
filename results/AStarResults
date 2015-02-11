@@ -1,0 +1,689 @@
+Doing a AStarWalk of input/SBP-level0.txt:
+(2,left)
+(4,down)
+(3,right)
+(2,up)
+(2,up)
+5,4
+1,2,2,1,1,
+1,0,0,3,1,
+1,0,0,4,1,
+1,1,1,1,1,
+Number of moves: 5
+Number of nodes generated: 30
+Number of nodes actually added: 17
+
+real	0m0.008s
+user	0m0.004s
+sys	0m0.000s
+
+Doing a AStarWalk of input/SBP-level1.txt:
+(6,left)
+(7,left)
+(5,down)
+(4,left)
+(2,down)
+(3,right)
+(4,up)
+(2,left)
+(7,up)
+(7,right)
+(5,up)
+(7,up)
+(7,right)
+(7,right)
+(2,down)
+(2,left)
+5,5
+1,1,1,1,1,
+1,3,4,5,1,
+1,0,0,6,1,
+2,2,0,7,1,
+1,1,1,1,1,
+Number of moves: 16
+Number of nodes generated: 315
+Number of nodes actually added: 160
+
+real	0m0.034s
+user	0m0.028s
+sys	0m0.004s
+
+Doing a AStarWalk of input/SBP-level2.txt:
+(3,left)
+(2,left)
+(4,left)
+(7,up)
+(6,up)
+(8,up)
+(8,right)
+(8,right)
+(5,down)
+(7,left)
+(5,left)
+(5,down)
+(2,down)
+(4,left)
+(5,up)
+(2,right)
+(3,right)
+(6,up)
+(7,left)
+(8,left)
+(6,up)
+(7,up)
+(8,left)
+(2,down)
+(6,down)
+(5,right)
+(4,right)
+(3,right)
+(6,up)
+(8,up)
+(2,left)
+(2,left)
+(2,left)
+6,5
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,7,5,8,1,
+2,2,0,0,0,1,
+1,1,1,1,1,1,
+Number of moves: 33
+Number of nodes generated: 2400
+Number of nodes actually added: 1207
+
+real	0m0.595s
+user	0m0.588s
+sys	0m0.004s
+
+Doing a AStarWalk of input/SBP-level3.txt:
+(6,down)
+(4,down)
+(3,right)
+(4,up)
+(5,left)
+(6,left)
+(10,up)
+(10,right)
+(9,right)
+(4,down)
+(8,right)
+(4,down)
+(4,left)
+(2,left)
+(7,up)
+(10,up)
+(10,right)
+(5,up)
+(8,up)
+(9,right)
+(8,right)
+(7,right)
+(5,down)
+(6,down)
+(3,down)
+(4,down)
+(2,left)
+(3,left)
+(4,up)
+(7,up)
+(10,up)
+(10,right)
+(7,right)
+(9,right)
+(6,down)
+(2,down)
+(3,left)
+(4,left)
+(3,left)
+(4,left)
+(5,up)
+(7,up)
+(10,up)
+(7,up)
+(10,right)
+(10,right)
+(9,right)
+(9,right)
+(2,down)
+(2,left)
+6,6
+1,1,1,1,1,1,
+1,3,4,5,5,1,
+1,0,0,6,7,1,
+2,2,0,6,8,1,
+2,2,0,9,10,1,
+1,1,1,1,1,1,
+Number of moves: 50
+Number of nodes generated: 8102
+Number of nodes actually added: 4077
+
+real	0m6.583s
+user	0m6.564s
+sys	0m0.012s
+
+Doing a AStarWalk of input/SBP-bricks-level1.txt:
+(12,down)
+(12,down)
+(8,down)
+(8,down)
+(2,down)
+(4,left)
+(6,up)
+(8,up)
+(3,right)
+(6,up)
+(8,up)
+(9,up)
+(10,left)
+(12,up)
+(12,right)
+(2,down)
+(8,left)
+(10,up)
+(12,up)
+(7,right)
+(10,up)
+(12,up)
+(13,up)
+(16,up)
+(16,right)
+(15,left)
+(2,down)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,8,9,10,1,
+1,11,0,0,12,1,
+1,13,0,0,14,1,
+1,15,2,2,16,1,
+1,1,2,2,1,1,
+Number of moves: 28
+Number of nodes generated: 4909
+Number of nodes actually added: 2507
+
+real	0m1.683s
+user	0m1.672s
+sys	0m0.008s
+
+Doing a AStarWalk of input/SBP-bricks-level2.txt:
+(10,down)
+(13,right)
+(6,down)
+(12,right)
+(5,right)
+(3,down)
+(8,down)
+(4,down)
+(2,left)
+(6,up)
+(4,up)
+(9,up)
+(7,up)
+(9,right)
+(7,right)
+(6,right)
+(11,up)
+(12,left)
+(6,down)
+(2,down)
+(3,left)
+(5,up)
+(3,left)
+(4,left)
+(6,up)
+(6,up)
+(2,right)
+(8,up)
+(12,up)
+(7,up)
+(9,up)
+(10,left)
+(13,left)
+(11,down)
+(2,down)
+(7,right)
+(7,right)
+(8,up)
+(7,right)
+(10,up)
+(12,left)
+(9,up)
+(12,up)
+(13,left)
+(13,left)
+(2,down)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,8,9,6,1,
+1,7,0,0,10,1,
+1,11,0,0,12,1,
+1,13,2,2,14,1,
+1,1,2,2,1,1,
+Number of moves: 47
+Number of nodes generated: 70186
+Number of nodes actually added: 36073
+
+real	8m32.154s
+user	8m30.720s
+sys	0m1.092s
+
+Doing a AStarWalk of input/SBP-bricks-level3.txt:
+(9,down)
+(13,left)
+(10,down)
+(9,left)
+(7,down)
+(7,left)
+(4,down)
+(4,down)
+(2,right)
+(5,up)
+(4,up)
+(6,left)
+(6,up)
+(9,up)
+(12,up)
+(13,left)
+(8,down)
+(7,left)
+(2,down)
+(4,right)
+(5,up)
+(5,right)
+(4,right)
+(7,up)
+(6,up)
+(2,left)
+(10,up)
+(8,up)
+(10,right)
+(9,right)
+(13,right)
+(9,down)
+(2,down)
+(4,down)
+(6,right)
+(3,right)
+(8,up)
+(10,up)
+(6,up)
+(9,up)
+(11,left)
+(12,left)
+(11,up)
+(12,left)
+(2,down)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,3,4,7,8,1,
+1,9,0,0,8,1,
+1,10,0,0,11,1,
+1,12,2,2,13,1,
+1,1,2,2,1,1,
+Number of moves: 46
+Number of nodes generated: 104718
+Number of nodes actually added: 53336
+
+real	23m14.062s
+user	23m11.411s
+sys	0m1.744s
+
+Doing a AStarWalk of input/SBP-bricks-level4.txt:
+(10,down)
+(9,down)
+(6,down)
+(6,left)
+(5,right)
+(7,up)
+(8,left)
+(9,left)
+(4,down)
+(4,down)
+(2,right)
+(5,up)
+(4,up)
+(6,left)
+(6,up)
+(9,up)
+(7,left)
+(8,left)
+(13,up)
+(13,right)
+(8,down)
+(2,down)
+(4,right)
+(4,right)
+(5,up)
+(4,right)
+(3,right)
+(6,up)
+(7,left)
+(6,up)
+(7,up)
+(8,up)
+(11,up)
+(12,left)
+(10,left)
+(11,left)
+(11,down)
+(2,down)
+(5,down)
+(7,right)
+(4,right)
+(3,right)
+(6,up)
+(8,up)
+(10,up)
+(11,right)
+(10,down)
+(9,left)
+(2,left)
+(13,up)
+(10,up)
+(13,right)
+(13,up)
+(13,right)
+(13,right)
+(2,down)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,7,5,8,1,
+1,9,0,0,10,1,
+1,9,0,0,11,1,
+1,12,2,2,13,1,
+1,1,2,2,1,1,
+Number of moves: 57
+Number of nodes generated: 208618
+Number of nodes actually added: 106112
+
+real	120m6.412s
+user	119m51.397s
+sys	0m9.893s
+
+Doing a AStarWalk of input/SBP-bricks-level5.txt:
+(9,down)
+(6,down)
+(9,down)
+(8,right)
+(5,right)
+(3,down)
+(4,down)
+(2,left)
+(6,up)
+(8,up)
+(4,up)
+(11,up)
+(7,up)
+(11,right)
+(10,right)
+(9,up)
+(6,down)
+(11,up)
+(11,right)
+(6,down)
+(2,down)
+(3,left)
+(5,up)
+(3,left)
+(6,up)
+(4,left)
+(6,up)
+(2,right)
+(8,up)
+(7,up)
+(9,left)
+(10,left)
+(10,down)
+(2,down)
+(5,down)
+(7,left)
+(5,left)
+(8,up)
+(8,up)
+(12,up)
+(12,right)
+(10,up)
+(11,right)
+(12,up)
+(12,right)
+(2,down)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,7,8,5,6,1,
+1,7,0,0,9,1,
+1,10,0,0,11,1,
+1,10,2,2,12,1,
+1,1,2,2,1,1,
+Number of moves: 47
+Number of nodes generated: 79852
+Number of nodes actually added: 40204
+
+real	13m22.538s
+user	13m20.722s
+sys	0m1.040s
+
+Doing a AStarWalk of input/SBP-bricks-level6.txt:
+(9,down)
+(8,down)
+(6,down)
+(6,left)
+(8,up)
+(8,right)
+(10,up)
+(11,left)
+(8,up)
+(12,left)
+(11,up)
+(12,left)
+(10,down)
+(8,down)
+(9,left)
+(4,down)
+(4,down)
+(2,right)
+(5,up)
+(4,up)
+(8,up)
+(6,up)
+(11,up)
+(12,left)
+(8,down)
+(7,left)
+(2,down)
+(4,right)
+(4,right)
+(5,up)
+(4,right)
+(7,up)
+(6,up)
+(2,left)
+(10,up)
+(8,up)
+(10,right)
+(12,right)
+(9,down)
+(2,down)
+(4,down)
+(6,right)
+(3,right)
+(8,up)
+(6,up)
+(2,left)
+(9,left)
+(9,up)
+(12,up)
+(12,right)
+(12,right)
+(11,right)
+(11,right)
+(2,down)
+(9,left)
+(9,left)
+(4,down)
+(4,left)
+(5,left)
+(8,up)
+(10,up)
+(12,up)
+(12,right)
+(2,right)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,3,7,8,6,1,
+1,9,7,10,10,1,
+1,0,0,0,11,1,
+1,0,2,2,12,1,
+1,1,2,2,1,1,
+Number of moves: 65
+Number of nodes generated: 185038
+Number of nodes actually added: 93478
+
+real	89m58.943s
+user	89m39.528s
+sys	0m14.525s
+
+Doing a AStarWalk of input/SBP-bricks-level7.txt:
+(10,right)
+(5,down)
+(5,left)
+(9,up)
+(11,left)
+(7,down)
+(6,right)
+(5,right)
+(7,up)
+(10,left)
+(11,left)
+(9,left)
+(7,down)
+(6,right)
+(7,up)
+(11,up)
+(11,right)
+(5,down)
+(5,left)
+(6,left)
+(10,down)
+(4,down)
+(4,down)
+(2,right)
+(3,right)
+(4,up)
+(4,up)
+(7,up)
+(10,left)
+(5,up)
+(8,left)
+(9,left)
+(11,left)
+(11,up)
+(7,down)
+(6,right)
+(8,up)
+(11,right)
+(11,right)
+(6,down)
+(4,down)
+(3,right)
+(4,up)
+(7,up)
+(8,left)
+(5,down)
+(6,down)
+(5,right)
+(5,up)
+(6,left)
+(6,left)
+(10,up)
+(11,right)
+(10,down)
+(7,left)
+(11,up)
+(11,right)
+(7,down)
+(6,right)
+(3,down)
+(3,left)
+(6,right)
+(5,up)
+(8,up)
+(6,up)
+(9,left)
+(10,left)
+(10,down)
+(7,down)
+(2,down)
+(4,right)
+(4,right)
+(3,right)
+(3,right)
+(6,up)
+(6,up)
+(8,up)
+(10,left)
+(11,left)
+(8,up)
+(10,left)
+(11,left)
+(9,down)
+(2,down)
+(6,down)
+(5,right)
+(4,right)
+(8,up)
+(6,up)
+(2,left)
+(7,down)
+(8,down)
+(6,down)
+(6,down)
+(5,right)
+(4,right)
+(3,right)
+(6,up)
+(6,up)
+(2,left)
+(8,left)
+(8,up)
+(11,up)
+(11,right)
+(10,right)
+(11,right)
+(10,right)
+(2,down)
+(7,left)
+(7,left)
+(8,left)
+(8,left)
+(9,up)
+(11,up)
+(11,right)
+(2,right)
+(2,down)
+6,7
+1,1,1,1,1,1,
+1,3,4,5,6,1,
+1,3,4,5,6,1,
+1,7,8,9,9,1,
+1,0,0,0,10,1,
+1,0,2,2,11,1,
+1,1,2,2,1,1,
+Number of moves: 117
+Number of nodes generated: 77506
+Number of nodes actually added: 38818
+
+real	14m17.187s
+user	14m14.049s
+sys	0m2.128s
