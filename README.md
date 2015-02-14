@@ -4,15 +4,17 @@ Program for a SlidingBrickPuzzle done for an AI course.
 Currently, two different drivers can be use to run the program, and they can be run using the
 makefile, using the following targets:
 	
-	STRAT=x [FILE=y [MOVES=z]] make walk - this will perform a walk of the given input file y (using
-	input/SBP-leve0.txt if FILE is ommitted) using the search strategy specified by x (b for
-	breadth first, d for depth first, l for depth limited, i for iterative deepening, and r for
-	random). For walks/searches which require a maximum number of moves (depth limited, iterative
-	deepening, random), the MOVES parameter will specify this. Note that if MOVES is specified, FILE
-	has to be specified too.
+	STRAT=x [FILE=y [MOVES=z]] make walk - this will perform a walk of the given
+	input file y (using input/SBP-leve0.txt if FILE is ommitted) using the search
+	strategy specified by x (b for breadth first, d for depth first, a for A*, l
+	for depth limited, i for iterative deepening, and r for random). For searches
+	that require a maximum number of moves (depth limited, iterative deepening,
+	random), the MOVES parameter will specify this. Note that if MOVES is
+	specified, FILE has to be specified too.
  	
-	make correct - this will run the driver drivers/correct.c, and will write the results to
-	results/results.test. Runs tests on the SlidingBrickPuzzle and its related classes
+	make correct - this will run the driver drivers/correct.c, and will write the
+	results to results/results.test. Runs tests on the SlidingBrickPuzzle and its
+	related classes.
 
 The make clean target can be used to remove the output files and the intermediate .o files.
 
