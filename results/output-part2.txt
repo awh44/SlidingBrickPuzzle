@@ -1,3 +1,7 @@
+NOTE: The "number of nodes generated" is the number of nodes created with calls to new MoveNode,
+which creates the new version of the state. "nodes actually added" are those nodes which are
+actually added to the open_list_ once it is determined that they are not in the closed_list_ yet.
+
 Doing a AStarWalk of input/SBP-level0.txt:
 (2,left)
 (4,down)
